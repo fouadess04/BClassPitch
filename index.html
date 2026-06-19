@@ -290,10 +290,98 @@ table.bn-table td.win{color:var(--active-green);font-weight:700;font-family:var(
 @media (prefers-reduced-motion:reduce){
   .fab{transition:none;}
 }
+
+/* Hide navigation buttons and hints in fullscreen mode */
+:fullscreen .hint-chrome,
+:fullscreen .fab-stack {
+  display: none !important;
+}
+:-webkit-full-screen .hint-chrome,
+:-webkit-full-screen .fab-stack {
+  display: none !important;
+}
+:-moz-full-screen .hint-chrome,
+:-moz-full-screen .fab-stack {
+  display: none !important;
+}
+:-ms-fullscreen .hint-chrome,
+:-ms-fullscreen .fab-stack {
+  display: none !important;
+}
+
+/* Mobile landscape warning / fullscreen prompt overlay */
+#mobileOverlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(150deg, var(--primary-blue) 0%, var(--primary-blue-deep) 55%, #082b50 100%);
+  color: #fff;
+  z-index: 10000;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px;
+  font-family: var(--sans);
+}
+#mobileOverlay svg {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 24px;
+  animation: rotateDevice 2s infinite ease-in-out;
+}
+#mobileOverlay h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin: 0 0 12px;
+  letter-spacing: -0.01em;
+}
+#mobileOverlay p {
+  font-family: var(--serif);
+  color: #D8E8FA;
+  max-width: 320px;
+  margin: 0 0 32px;
+  line-height: 1.5;
+  font-size: 1.05rem;
+}
+#mobileOverlay button {
+  background: var(--active-green);
+  color: #fff;
+  border: none;
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 14px 28px;
+  border-radius: 9999px;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(30,120,51,0.3);
+  transition: transform 0.2s, background-color 0.2s;
+}
+#mobileOverlay button:active {
+  transform: scale(0.96);
+}
+
+@keyframes rotateDevice {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(-90deg); }
+  100% { transform: rotate(0deg); }
+}
 </style>
 </head>
 
 <body class="impress-not-supported">
+
+<!-- Mobile Overlay -->
+<div id="mobileOverlay">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+    <line x1="12" y1="18" x2="12.01" y2="18"/>
+  </svg>
+  <h2>Rotate Your Device</h2>
+  <p>Please rotate your phone horizontally to landscape mode for the best viewing experience.</p>
+  <button id="fullscreenBtn">Enter Fullscreen &amp; Start</button>
+  <span id="exitFullscreenText" style="color: #ff4a4a; cursor: pointer; display: block; margin-top: 18px; font-family: var(--sans); font-size: 0.9rem; font-weight: 700; text-decoration: underline;">Exit full screen mode</span>
+</div>
 
 <div class="fallback-message">
   <div>
@@ -632,6 +720,67 @@ table.bn-table td.win{color:var(--active-green);font-weight:700;font-family:var(
   document.getElementById('nextBtn').addEventListener('click', function(){ api.next(); });
   document.getElementById('prevBtn').addEventListener('click', function(){ api.prev(); });
   document.getElementById('mapBtn').addEventListener('click', function(){ api.goto('whatsnext'); });
+
+  // Mobile Helpers & Orientation Locking
+  var isMobile = ('ontouchstart' in window || navigator.maxTouchPoints > 0 || /Mobi|Android|iPhone/i.test(navigator.userAgent));
+
+  function enterFullscreen() {
+    var docEl = document.documentElement;
+    if (docEl.requestFullscreen) {
+      docEl.requestFullscreen();
+    } else if (docEl.webkitRequestFullscreen) {
+      docEl.webkitRequestFullscreen();
+    } else if (docEl.msRequestFullscreen) {
+      docEl.msRequestFullscreen();
+    }
+  }
+
+  function checkOrientation() {
+    var isPortrait = window.innerHeight > window.innerWidth;
+    var overlay = document.getElementById('mobileOverlay');
+    if (isMobile && isPortrait) {
+      overlay.style.display = 'flex';
+    } else {
+      overlay.style.display = 'none';
+    }
+  }
+
+  if (isMobile) {
+    checkOrientation();
+    window.addEventListener('resize', checkOrientation);
+    window.addEventListener('orientationchange', checkOrientation);
+
+    document.getElementById('fullscreenBtn').addEventListener('click', function() {
+      enterFullscreen();
+      setTimeout(checkOrientation, 300);
+    });
+
+    document.getElementById('exitFullscreenText').addEventListener('click', function() {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
+      setTimeout(checkOrientation, 300);
+    });
+
+    // Screen side clicking: right = forward, left = backward
+    document.addEventListener('click', function(e) {
+      if (e.target.closest('a, button, input, textarea, select, .chrome, .step:not(.active)')) {
+        return;
+      }
+      var clickX = e.clientX;
+      var screenWidth = window.innerWidth;
+
+      if (clickX > screenWidth / 2) {
+        api.next();
+      } else {
+        api.prev();
+      }
+    });
+  }
 })();
 </script>
 </body>
