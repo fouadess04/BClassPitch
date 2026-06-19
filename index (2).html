@@ -1,0 +1,1687 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>BClass — Présentation du Projet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ============================================================
+       CUSTOM FONTS
+       ============================================================ */
+    @font-face {
+      font-family: 'Lekton';
+      src: url('Assets/fonts/Lekton/Lekton-Regular.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Lekton';
+      src: url('Assets/fonts/Lekton/Lekton-Bold.ttf') format('truetype');
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Lekton';
+      src: url('Assets/fonts/Lekton/Lekton-Italic.ttf') format('truetype');
+      font-weight: 400;
+      font-style: italic;
+    }
+
+    /* ============================================================
+   BNOTE THEME TOKENS
+   ============================================================ */
+    :root {
+      --primary-blue: #0E4B8A;
+      --primary-blue-deep: #0A3868;
+      --active-green: #1E7833;
+      --active-green-deep: #155726;
+      --canvas-bg: #FFFFFF;
+      --neutral-text: #2C3E50;
+      --card-canvas: #F8FAFC;
+
+      --pink-bg: #FCE7F3;
+      --pink-text: #9D174D;
+      --blue-bg: #E0F2FE;
+      --blue-text: #0369A1;
+      --red-bg: #FEE2E2;
+      --red-text: #DC2626;
+      --green-bg: #DCFCE7;
+      --green-text: #1E7833;
+      --glossary: #94A3B8;
+
+      --sans: 'Manrope', system-ui, sans-serif;
+      --serif: 'Lora', Georgia, serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    body {
+      font-family: var(--serif);
+      color: var(--neutral-text);
+      background-color: #FFFFFF;
+      background-image:
+        radial-gradient(circle at 1px 1px, rgba(14, 75, 138, 0.09) 1.4px, transparent 0);
+      background-size: 38px 38px;
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    .sans {
+      font-family: var(--sans);
+    }
+
+    p {
+      line-height: 1.62;
+    }
+
+    ul {
+      padding-left: 1.15em;
+    }
+
+    li {
+      margin-bottom: 6px;
+      line-height: 1.55;
+    }
+
+    a {
+      color: var(--primary-blue);
+    }
+
+    /* ============================================================
+   IMPRESS FALLBACK (non-supported browsers)
+   ============================================================ */
+    .fallback-message {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: #fff;
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      text-align: center;
+      font-family: var(--sans);
+      color: var(--primary-blue);
+    }
+
+    .impress-not-supported .fallback-message {
+      display: flex;
+    }
+
+    .impress-not-supported #impress .step {
+      position: relative;
+      margin: 40px auto;
+      opacity: 1;
+    }
+
+    /* ============================================================
+   CANVAS / STEP BASE
+   ============================================================ */
+
+    .step {
+      width: 1100px;
+      min-height: 760px;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      opacity: .45;
+      -webkit-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
+      transition: opacity 800ms ease, visibility 0s .5s;
+    }
+
+    .step.active {
+      opacity: 1;
+      transition: opacity .5s ease, visibility 0s 0s;
+    }
+
+    /* Fully hide the large overview capstone slide when not active */
+    #whatsnext:not(.active) {
+      opacity: 0 !important;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .step .eyebrow {
+      font-family: var(--sans);
+      font-weight: 700;
+      font-size: .72rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--primary-blue);
+      margin: 0 0 10px 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .step .eyebrow::before {
+      content: "";
+      display: inline-block;
+      width: 16px;
+      height: 2px;
+      background: var(--active-green);
+    }
+
+    /* ============================================================
+   TYPE A — HEADERED NOTE CARD
+   ============================================================ */
+    .note-card {
+      --accent: var(--primary-blue);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--card-canvas);
+      box-shadow: 0 28px 60px -28px rgba(14, 75, 138, .30), 0 2px 10px rgba(0, 0, 0, .04);
+    }
+
+    .note-card .card-header {
+      background: var(--accent);
+      color: #fff;
+      font-family: var(--sans);
+      padding: 18px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .note-card .card-header h2 {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+
+    .note-card .card-header .tag {
+      font-family: var(--sans);
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      background: rgba(255, 255, 255, .18);
+      color: #fff;
+      border-radius: 9999px;
+      padding: 5px 13px;
+      white-space: nowrap;
+      text-transform: uppercase;
+    }
+
+    .note-card .card-body {
+      border-left: 5px solid var(--accent);
+      padding: 26px 32px 28px;
+      font-family: var(--serif);
+      font-size: 1rem;
+      max-height: 560px;
+      overflow-y: auto;
+    }
+
+    .note-card .card-body h3 {
+      font-family: var(--sans);
+      color: var(--accent);
+      font-size: .95rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin: 18px 0 8px;
+    }
+
+    .note-card .card-body h3:first-child {
+      margin-top: 0;
+    }
+
+    /* ============================================================
+   TYPE B — MINI LEFT-BORDER CARDS
+   ============================================================ */
+    .mini-card {
+      --accent: var(--primary-blue);
+      border-radius: 8px;
+      background: var(--card-canvas);
+      border-left: 5px solid var(--accent);
+      padding: 16px 20px;
+      box-shadow: 0 10px 24px -16px rgba(14, 75, 138, .22);
+    }
+
+    .mini-card h4 {
+      margin: 0 0 4px;
+      font-family: var(--sans);
+      color: var(--neutral-text);
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    .mini-card .role {
+      font-family: var(--sans);
+      font-size: .78rem;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .mini-card p {
+      margin: 6px 0;
+      font-size: .92rem;
+    }
+
+    .mini-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .mini-grid.cols-2 {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .mini-grid.cols-3 {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .mini-grid.cols-4 {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    /* ============================================================
+   PILLS / INLINE HIGHLIGHTS (semantic scheme)
+   ============================================================ */
+    .pill {
+      font-family: var(--sans);
+      font-weight: 700;
+      font-size: .8rem;
+      border-radius: 4px;
+      padding: 2px 7px;
+      display: inline;
+      white-space: nowrap;
+    }
+
+    .pill-pink {
+      background: var(--pink-bg);
+      color: var(--pink-text);
+    }
+
+    .pill-blue {
+      background: var(--blue-bg);
+      color: var(--blue-text);
+    }
+
+    .pill-red {
+      background: var(--red-bg);
+      color: var(--red-text);
+    }
+
+    .pill-green {
+      background: var(--green-bg);
+      color: var(--green-text);
+    }
+
+    .pill-ghost {
+      background: rgba(255, 255, 255, .18);
+      color: #fff;
+    }
+
+    .hl-underline {
+      border-bottom: 2px solid var(--glossary);
+      padding-bottom: 1px;
+      font-style: italic;
+    }
+
+    .status-pill {
+      font-family: var(--sans);
+      font-weight: 700;
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      border-radius: 9999px;
+      padding: 4px 12px;
+      display: inline-block;
+    }
+
+    /* ============================================================
+   TABLES
+   ============================================================ */
+    table.bn-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .88rem;
+      margin: 8px 0;
+    }
+
+    table.bn-table th {
+      font-family: var(--sans);
+      background: var(--primary-blue);
+      color: #fff;
+      text-align: left;
+      padding: 9px 12px;
+      font-size: .74rem;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    table.bn-table th:first-child {
+      border-radius: 6px 0 0 0;
+    }
+
+    table.bn-table th:last-child {
+      border-radius: 0 6px 0 0;
+    }
+
+    table.bn-table td {
+      padding: 9px 12px;
+      border-bottom: 1px solid #E2E8F0;
+    }
+
+    table.bn-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    table.bn-table td.win {
+      color: var(--active-green);
+      font-weight: 700;
+      font-family: var(--sans);
+    }
+
+    /* ============================================================
+   STAT TILES
+   ============================================================ */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 14px;
+      margin: 10px 0;
+    }
+
+    .stat-tile {
+      background: #fff;
+      border-radius: 8px;
+      padding: 14px 16px;
+      border: 1px solid #E2E8F0;
+    }
+
+    .stat-tile .num {
+      font-family: var(--sans);
+      font-weight: 800;
+      font-size: 1.7rem;
+      color: var(--primary-blue);
+      line-height: 1;
+    }
+
+    .stat-tile.green .num {
+      color: var(--active-green);
+    }
+
+    .stat-tile .lbl {
+      font-family: var(--sans);
+      font-size: .74rem;
+      color: #64748B;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      margin-top: 4px;
+      display: block;
+    }
+
+    /* ============================================================
+   FUNNEL (TAM / SAM / SOM)
+   ============================================================ */
+    .funnel {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 10px 0;
+    }
+
+    .funnel-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .funnel-bar {
+      height: 38px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      font-family: var(--sans);
+      color: #fff;
+      font-weight: 700;
+      font-size: .84rem;
+    }
+
+    .funnel-label {
+      font-family: var(--sans);
+      font-size: .78rem;
+      width: 130px;
+      flex-shrink: 0;
+      color: var(--neutral-text);
+      font-weight: 700;
+    }
+
+    /* ============================================================
+   ROADMAP PHASES
+   ============================================================ */
+    .phase-track {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+    }
+
+    .phase {
+      background: #fff;
+      border-radius: 8px;
+      border-left: 5px solid var(--active-green);
+      padding: 14px 16px;
+      box-shadow: 0 10px 24px -16px rgba(30, 120, 51, .22);
+    }
+
+    .phase .step-count {
+      font-family: var(--sans);
+      font-weight: 800;
+      font-size: .7rem;
+      letter-spacing: .06em;
+      background: var(--green-bg);
+      color: var(--green-text);
+      border-radius: 9999px;
+      padding: 3px 10px;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .phase h4 {
+      margin: 0 0 6px;
+      font-family: var(--sans);
+      font-size: .98rem;
+    }
+
+    .phase ul {
+      margin: 6px 0;
+      padding-left: 1.1em;
+      font-size: .84rem;
+    }
+
+    .phase .metric {
+      font-family: var(--sans);
+      font-size: .76rem;
+      color: var(--active-green-deep);
+      font-weight: 700;
+      margin-top: 8px;
+    }
+
+    /* ============================================================
+   HERO SLIDES (Title / What's Next)
+   ============================================================ */
+    .hero {
+      width: calc(100% - 80px);
+      min-height: calc(760px - 80px);
+      margin: 40px auto;
+      border-radius: 18px;
+      overflow: hidden;
+      background: linear-gradient(150deg, var(--primary-blue) 0%, var(--primary-blue-deep) 55%, #082b50 100%);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 70px;
+      position: relative;
+      box-shadow: 0 40px 90px -30px rgba(8, 40, 80, .55);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 80% 12%, rgba(255, 255, 255, .10), transparent 45%),
+        radial-gradient(circle at 10% 90%, rgba(30, 120, 51, .25), transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero .logo-mark {
+      width: 96px;
+      height: 96px;
+      margin-bottom: 18px;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+    }
+
+    .hero .pill-ghost {
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: 4.4rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin: 0 0 6px;
+    }
+
+    .hero .tagline {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.35rem;
+      color: #D8E8FA;
+      margin: 0 0 34px;
+    }
+
+    .hero .contact-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 6px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero .contact-chip {
+      font-family: var(--sans);
+      font-size: .78rem;
+      background: rgba(255, 255, 255, .12);
+      border: 1px solid rgba(255, 255, 255, .25);
+      border-radius: 9999px;
+      padding: 6px 14px;
+      color: #fff;
+      text-decoration: none;
+      transition: background .2s, border-color .2s;
+    }
+
+    a.contact-chip:hover {
+      background: rgba(255, 255, 255, .22);
+      border-color: rgba(255, 255, 255, .4);
+    }
+
+    .hero .hint {
+      margin-top: 40px;
+      font-family: var(--sans);
+      font-size: .76rem;
+      letter-spacing: .04em;
+      color: rgba(255, 255, 255, .65);
+      text-transform: uppercase;
+      position: relative;
+      z-index: 1;
+    }
+
+    body.presentation-mode #title .hint {
+      display: none;
+    }
+
+    .hero .founder-line {
+      font-family: var(--sans);
+      font-size: .9rem;
+      color: #cfe1f7;
+      margin-top: 4px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* First slide specific vertical margins */
+    #title .logo-mark {
+      margin-bottom: 24px;
+    }
+
+    #title .pill-ghost {
+      margin-bottom: 24px;
+    }
+
+    #title h1 {
+      margin: 20px 0;
+    }
+
+    #title .tagline {
+      margin-bottom: 40px;
+    }
+
+    /* ============================================================
+   FIXED UI CHROME (outside canvas)
+   ============================================================ */
+    .chrome {
+      position: fixed;
+      z-index: 50;
+      font-family: var(--sans);
+    }
+
+    .wordmark {
+      top: 22px;
+      left: 26px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .wordmark img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+    }
+
+    .wordmark span {
+      font-weight: 800;
+      font-size: 1.55rem;
+      color: #3A9749;
+      letter-spacing: -0.01em;
+    }
+
+    .progress-pill {
+      top: 22px;
+      right: 26px;
+      background: var(--primary-blue);
+      color: #fff;
+      border-radius: 9999px;
+      padding: 8px 18px;
+      font-weight: 700;
+      font-size: .8rem;
+      box-shadow: 0 10px 22px -10px rgba(14, 75, 138, .5);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .progress-pill .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #7CFFA0;
+    }
+
+    .fab-stack {
+      bottom: 28px;
+      right: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .fab {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      box-shadow: 0 14px 28px -10px rgba(14, 75, 138, .45);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+
+    .fab:hover {
+      transform: translateY(-2px) scale(1.05);
+    }
+
+    .fab:active {
+      transform: scale(.96);
+    }
+
+    .fab svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .fab.next,
+    .fab.prev {
+      background: var(--primary-blue);
+    }
+
+    .fab.map {
+      background: var(--active-green);
+      width: 54px;
+      height: 54px;
+    }
+
+    .fab.map svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .hint-chrome {
+      bottom: 26px;
+      left: 26px;
+      font-size: .74rem;
+      color: #64748B;
+      background: rgba(255, 255, 255, .85);
+      backdrop-filter: blur(4px);
+      border: 1px solid #E2E8F0;
+      border-radius: 24px;
+      padding: 8px 16px;
+    }
+
+    .hint-chrome b {
+      color: var(--primary-blue);
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      .fab {
+        transition: none;
+      }
+    }
+
+    /* Hide navigation buttons and hints in fullscreen mode */
+    :fullscreen .hint-chrome,
+    :fullscreen .fab-stack {
+      display: none !important;
+    }
+
+    :-webkit-full-screen .hint-chrome,
+    :-webkit-full-screen .fab-stack {
+      display: none !important;
+    }
+
+    :-moz-full-screen .hint-chrome,
+    :-moz-full-screen .fab-stack {
+      display: none !important;
+    }
+
+    :-ms-fullscreen .hint-chrome,
+    :-ms-fullscreen .fab-stack {
+      display: none !important;
+    }
+
+    /* Mobile landscape warning / fullscreen prompt overlay */
+    #mobileOverlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(150deg, var(--primary-blue) 0%, var(--primary-blue-deep) 55%, #082b50 100%);
+      color: #fff;
+      z-index: 10000;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px;
+      font-family: var(--sans);
+    }
+
+    #mobileOverlay svg {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 24px;
+      animation: rotateDevice 2s infinite ease-in-out;
+    }
+
+    #mobileOverlay h2 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin: 0 0 12px;
+      letter-spacing: -0.01em;
+    }
+
+    #mobileOverlay p {
+      font-family: var(--serif);
+      color: #D8E8FA;
+      max-width: 320px;
+      margin: 0 0 32px;
+      line-height: 1.5;
+      font-size: 1.05rem;
+    }
+
+    #mobileOverlay button {
+      background: var(--active-green);
+      color: #fff;
+      border: none;
+      font-family: var(--sans);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 14px 28px;
+      border-radius: 9999px;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(30, 120, 51, 0.3);
+      transition: transform 0.2s, background-color 0.2s;
+    }
+
+    #mobileOverlay button:active {
+      transform: scale(0.96);
+    }
+
+    @keyframes rotateDevice {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      50% {
+        transform: rotate(-90deg);
+      }
+
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+
+    /* ============================================================
+       PRICING CARDS (slide 10)
+       ============================================================ */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .pricing-card {
+      border: 1.5px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 16px 14px;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: border-color .2s, box-shadow .2s;
+    }
+
+    .pricing-card:hover {
+      box-shadow: 0 4px 16px rgba(14, 75, 138, .10);
+    }
+
+    .pricing-card .plan-name {
+      font-family: var(--sans);
+      font-weight: 800;
+      font-size: .75rem;
+      text-transform: uppercase;
+      margin: 0 0 8px;
+      padding: 3px 10px;
+      border-radius: 6px;
+      letter-spacing: 0.02em;
+    }
+
+    .pricing-card .plan-price {
+      font-family: 'Lekton', monospace;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--neutral-text);
+      margin: 8px 0 12px;
+    }
+
+    .pricing-card .plan-features {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      text-align: left;
+    }
+
+    .pricing-card .plan-features li {
+      font-family: var(--serif);
+      font-size: .72rem;
+      color: #475569;
+      line-height: 1.45;
+      margin-bottom: 4px;
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .pricing-card .plan-features li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--glossary);
+      font-weight: 700;
+    }
+
+    /* Accent variants */
+    .pricing-card[data-accent="free"] {
+      border-top: 3px solid var(--glossary);
+    }
+
+    .pricing-card[data-accent="free"]:hover {
+      border-color: var(--glossary);
+    }
+
+    .pricing-card[data-accent="free"] .plan-name {
+      color: var(--neutral-text);
+      background: #F1F5F9;
+    }
+
+    .pricing-card[data-accent="premium"] {
+      border-top: 3px solid var(--active-green);
+    }
+
+    .pricing-card[data-accent="premium"]:hover {
+      border-color: var(--active-green);
+    }
+
+    .pricing-card[data-accent="premium"] .plan-name {
+      color: var(--active-green);
+      background: var(--green-bg);
+    }
+
+    .pricing-card[data-accent="supporter"] {
+      border-top: 3px solid var(--primary-blue);
+    }
+
+    .pricing-card[data-accent="supporter"]:hover {
+      border-color: var(--primary-blue);
+    }
+
+    .pricing-card[data-accent="supporter"] .plan-name {
+      color: var(--primary-blue);
+      background: var(--blue-bg);
+    }
+
+    .pricing-card[data-accent="residanat"] {
+      border-top: 3px solid var(--pink-text);
+    }
+
+    .pricing-card[data-accent="residanat"]:hover {
+      border-color: var(--pink-text);
+    }
+
+    .pricing-card[data-accent="residanat"] .plan-name {
+      color: var(--pink-text);
+      background: var(--pink-bg);
+    }
+  </style>
+</head>
+
+<body class="impress-not-supported">
+
+  <!-- Mobile Overlay -->
+  <div id="mobileOverlay">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+      stroke-linejoin="round">
+      <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+      <line x1="12" y1="18" x2="12.01" y2="18" />
+    </svg>
+    <h2>Tournez votre appareil</h2>
+    <p>Veuillez faire pivoter votre téléphone en mode paysage (horizontal) pour une meilleure expérience de visualisation.</p>
+    <button id="fullscreenBtn">Activer le plein écran &amp; commencer</button>
+    <span id="exitFullscreenText"
+      style="color: #ff4a4a; cursor: pointer; display: block; margin-top: 18px; font-family: var(--sans); font-size: 0.9rem; font-weight: 700; text-decoration: underline;">Quitter
+      le mode plein écran</span>
+  </div>
+
+  <div class="fallback-message">
+    <div>
+      <h2 style="margin:0 0 8px;">Ce diaporama nécessite un navigateur récent</h2>
+      <p style="font-family:var(--serif);color:var(--neutral-text);">Veuillez ouvrir cette présentation avec la dernière
+        version de Chrome, Safari, Edge ou Firefox pour consulter le deck BClass.</p>
+    </div>
+  </div>
+
+  <!-- ============== FIXED CHROME ============== -->
+  <div class="chrome wordmark">
+    <img src="Assets/bclass-logo.png" alt="BClass logo">
+    <span>BClass</span>
+  </div>
+
+  <div class="chrome progress-pill" id="progressPill"><span class="dot"></span><span id="progressText">01 / 13</span>
+  </div>
+
+  <div class="chrome fab-stack">
+    <button class="fab map" id="mapBtn" title="Zoom out — see the whole journey">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 7v5l3 2" />
+      </svg>
+    </button>
+    <button class="fab prev" id="prevBtn" title="Previous">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M18 15l-6-6-6 6" />
+      </svg>
+    </button>
+    <button class="fab next" id="nextBtn" title="Next">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M6 9l6 6 6-6" />
+      </svg>
+    </button>
+  </div>
+
+  <div class="chrome hint-chrome">Flèches / espace pour avancer · <span id="presentationModeBtn"
+      style="color: var(--primary-blue); font-weight: bold; cursor: pointer;">Mode présentation</span></div>
+
+  <!-- ============== IMPRESS CANVAS ============== -->
+  <div id="impress" data-transition-duration="900" data-width="1100" data-height="760" data-perspective="1200">
+
+    <!-- 1. TITLE -->
+    <div id="title" class="step" data-x="0" data-y="0" data-z="0">
+      <div class="hero">
+        <img class="logo-mark" src="Assets/bclass-logo.png" alt="BClass logo">
+        <span class="pill pill-ghost">BIGOVICLASS · LE PARTENAIRE DE L'ÉTUDIANT</span>
+        <h1>BClass</h1>
+        <p class="tagline">« La seule plateforme éducative dont vous aurez besoin. »</p>
+        <div class="contact-strip">
+          <span class="contact-chip">ESSAIDI Fouad — Fondateur &amp; CTO</span>
+          <a href="mailto:bigovi@outlook.com" class="contact-chip">bigovi@outlook.com</a>
+          <a href="tel:+213552143790" class="contact-chip">+213 552 14 37 90</a>
+          <a href="https://bigoviclass.com" target="_blank" class="contact-chip">bigoviclass.com</a>
+        </div>
+        <div class="hint">Dézoomez à tout moment pour voir l'ensemble — utilisez la boussole, en bas à droite</div>
+      </div>
+    </div>
+
+    <!-- 2. EXECUTIVE SUMMARY -->
+    <div id="exec-summary" class="step" data-x="-1400" data-y="850" data-z="-40" data-rotate="-3">
+      <div class="eyebrow">02 · L'essentiel en 60 secondes</div>
+      <div class="note-card" style="--accent:#0E4B8A;">
+        <div class="card-header">
+          <h2>Résumé du Projet</h2><span class="tag">Pitch Express</span>
+        </div>
+        <div class="card-body">
+          <h3>Le Problème</h3>
+          <p>Les étudiants en pharmacie à travers l'Algérie peinent avec des ressources d'apprentissage éparpillées —
+            groupes de discussion dispersés, aucun support fiable adapté aux examens, et aucun accès aux sujets
+            d'examens passés. Les <span class="pill pill-red">outils d'IA généralistes</span> leur font perdre du temps
+            avec des réponses hors-sujet, tandis que les restrictions des facultés bloquent une vraie préparation aux examens.
+          </p>
+          <h3>La Solution</h3>
+          <p>BClass est une plateforme d'apprentissage tout-en-un. Notre moteur d'IA, <span class="pill pill-pink">B-AI</span>,
+            génère des QCM spécifiques à chaque faculté à partir des documents des étudiants et des examens passés, avec des
+            explications sourcées directement depuis les supports de cours. Les <span class="pill pill-pink">BNotes</span> —
+            résumés générés par IA — adaptent le contenu aux modalités d'examen de chaque faculté.</p>
+          <h3>L'Impact</h3>
+          <p>Les étudiants étudient plus intelligemment, pas plus durement. BClass regroupe <span class="pill pill-blue">ressources,
+              quiz, résumés et examens passés</span> en un seul endroit — éliminant le temps perdu dans chaque faculté de
+            pharmacie algérienne.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. TEAM -->
+    <div id="team" class="step" data-x="0" data-y="850" data-z="-40" data-rotate="2">
+      <div class="eyebrow">03 · Qui construit ce projet</div>
+      <div class="note-card" style="--accent:#0369A1;">
+        <div class="card-header" style="background:#0369A1;">
+          <h2>L'Équipe</h2><span class="tag">4 Personnes</span>
+        </div>
+        <div class="card-body" style="border-left-color:#0369A1;">
+          <div class="mini-grid cols-2">
+            <div class="mini-card" style="--accent:#0369A1;">
+              <span class="role">Fondateur · CTO · Responsable Produit</span>
+              <h4>ESSAIDI Fouad (« Bigovi »)</h4>
+              <p>Étudiant en 4ème année de pharmacie (Blida). Développeur full-stack, UI/UX, ingénierie de prompts. A
+                conçu l'ensemble du pipeline B-AI &amp; BNotes.</p>
+              <p><span class="status-pill" style="background:#DCFCE7;color:#1E7833;">Développe &amp; dirige</span></p>
+            </div>
+            <div class="mini-card" style="--accent:#0369A1;">
+              <span class="role">Designer UI/UX · Frontend</span>
+              <h4>SADAOUI Ayoub</h4>
+              <p>Certifié UI/UX Google. Licence en développement web &amp; infographie. Spécialiste du design mobile-first.</p>
+              <p><span class="status-pill" style="background:#E0F2FE;color:#0369A1;">Engagé à rejoindre l'équipe</span></p>
+            </div>
+            <div class="mini-card" style="--accent:#0369A1;">
+              <span class="role">Responsable Backend &amp; Sécurité</span>
+              <h4>BOUZAGHOU Chafik</h4>
+              <p>Étudiant en cybersécurité à l'ESTIN, stagiaire chez Algérie Télécom, compétiteur CTF. Sécurise les
+                données &amp; l'infrastructure de BClass.</p>
+              <p><span class="status-pill" style="background:#E0F2FE;color:#0369A1;">Engagé à rejoindre l'équipe</span></p>
+            </div>
+            <div class="mini-card" style="--accent:#0369A1;">
+              <span class="role">Responsable Communauté Pharmacie</span>
+              <h4>DAHMANI Rayhane</h4>
+              <p>Étudiante en 4ème année de pharmacie (Blida). Valide la pertinence du contenu et collecte les
+                ressources auprès de la communauté étudiante.</p>
+              <p><span class="status-pill" style="background:#DCFCE7;color:#1E7833;">Contribue activement</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. PROBLEM -->
+    <div id="problem" class="step" data-x="1400" data-y="850" data-z="-40" data-rotate="-2">
+      <div class="eyebrow">04 · Pourquoi BClass doit exister</div>
+      <div class="note-card" style="--accent:#DC2626;">
+        <div class="card-header" style="background:#DC2626;">
+          <h2>Énoncé du Problème</h2><span class="tag">Réel &amp; Mesuré</span>
+        </div>
+        <div class="card-body" style="border-left-color:#DC2626;">
+          <p>Les professeurs distribuent des supports de cours avec peu de narration ou d'explication. Les étudiants
+            doivent décoder une matière dense presque entièrement seuls, sans questions d'examen authentiques pour s'entraîner.</p>
+          <div class="stat-grid">
+            <div class="stat-tile"><span class="num">4+ h</span><span class="lbl">pour déchiffrer un seul sujet</span></div>
+            <div class="stat-tile"><span class="num">&lt;20%</span><span class="lbl">taux moyen de présence en cours</span>
+            </div>
+            <div class="stat-tile"><span class="num">0</span><span class="lbl">banques d'examens alignées avec les facultés</span></div>
+          </div>
+          <h3>Étude de Cas</h3>
+          <p>Un étudiant en 3ème année de pharmacie à Blida face aux examens de biochimie : <span class="pill pill-red">50
+              diapositives</span>, 5+ heures à essayer d'en extraire le sens, aucune question passée, et des réponses
+            génériques de ChatGPT/Gemini qui ne correspondent pas au style d'examen de la faculté. Résultat : stress,
+            manque de préparation, énergie gaspillée.</p>
+          <p style="font-size:.82rem;"><span class="hl-underline">Source : retours des utilisateurs BClass, N = 50+ étudiants,
+              2024–2025, à Blida, Alger, Constantine &amp; Oran</span></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. SOLUTION -->
+    <div id="solution" class="step" data-x="-2100" data-y="1700" data-z="-80" data-rotate="3">
+      <div class="eyebrow">05 · Comment BClass règle le problème</div>
+      <div class="note-card" style="--accent:#1E7833;">
+        <div class="card-header" style="background:#1E7833;">
+          <h2>La Solution</h2><span class="tag">Processus en 3 étapes</span>
+        </div>
+        <div class="card-body" style="border-left-color:#1E7833;">
+          <h3>Étape 1 — Hub de ressources centralisé</h3>
+          <p>Les délégués de promo téléchargent les cours, PDF et enregistrements. Tout est organisé dans une interface
+            minimaliste — instantanément accessible à toute la faculté, avec une découverte inter-facultés intégrée.</p>
+          <h3>Étape 2 — Génération de QCM par IA</h3>
+          <p><span class="pill pill-pink">B-AI</span> analyse les supports téléchargés et les examens historiques de la
+            faculté pour générer automatiquement des QCM spécifiques, avec des explications citées directement depuis
+            les documents source.</p>
+          <h3>Étape 3 — Résumés d'étude orientés examen</h3>
+          <p>Les <span class="pill pill-pink">BNotes</span> synthétisent documents et tendances d'examen en résumés
+            ciblés — n'enseignant que ce que chaque faculté évalue réellement.</p>
+          <p style="margin-top:14px;"><span class="pill pill-green">Une première en Algérie</span> —
+            un alignement spécifique aux examens de chaque faculté, et non des résumés IA génériques comme NotebookLM.
+            Résultat : le temps de préparation passe de <span class="hl-underline">4+ heures à moins d'1 heure</span> par sujet.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. PROTOTYPE & TRACTION -->
+    <div id="traction" class="step" data-x="-700" data-y="1700" data-z="-80" data-rotate="-2">
+      <div class="eyebrow">06 · La preuve que ça fonctionne</div>
+      <div class="note-card" style="--accent:#1E7833;">
+        <div class="card-header" style="background:#1E7833;">
+          <h2>Prototype &amp; Traction</h2><span class="tag">Bêta en ligne</span>
+        </div>
+        <div class="card-body" style="border-left-color:#1E7833;">
+          <div class="stat-grid">
+            <div class="stat-tile green"><span class="num">150+</span><span class="lbl">étudiants actifs, Blida</span>
+            </div>
+            <div class="stat-tile green"><span class="num">0 DZD</span><span class="lbl">dépensés en marketing</span></div>
+            <div class="stat-tile green"><span class="num">500+</span><span class="lbl">utilisateurs visés, fin 2025</span>
+            </div>
+          </div>
+          <h3>Déjà disponible</h3>
+          <p>Hub de ressources · QCM générés par <span class="pill pill-pink">B-AI</span> · résumés <span
+              class="pill pill-pink">BNotes</span> · chat IA · calculateur de moyenne · suivi des progrès · planificateur
+            hebdomadaire intelligent.</p>
+          <h3>Prochains 6 mois</h3>
+          <p>S'étendre aux étudiants de 1ère, 2ème &amp; 5ème année à Blida, puis lancement à <span class="pill pill-blue">Alger,
+              Oran, Constantine &amp; Tizi-Ouzou</span>.</p>
+          <p style="font-size:.85rem;margin-top:6px;">Chacun des 150 utilisateurs actuels est arrivé par <span
+              class="hl-underline">bouche-à-oreille organique</span> — un signal fort de l'adéquation produit-marché dès le départ.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. IP -->
+    <div id="ip" class="step" data-x="700" data-y="1700" data-z="-80" data-rotate="2">
+      <div class="eyebrow">07 · Protéger ce que nous avons construit</div>
+      <div class="note-card" style="--accent:#0E4B8A;">
+        <div class="card-header">
+          <h2>Propriété Intellectuelle</h2><span class="tag">Stratégie PI</span>
+        </div>
+        <div class="card-body">
+          <div class="mini-grid cols-2">
+            <div class="mini-card" style="--accent:#0E4B8A;">
+              <h4>Brevets</h4>
+              <p>Aucun déposé pour l'instant — dépôts prévus après financement pour protéger les pipelines B-AI &amp; BNotes.</p>
+            </div>
+            <div class="mini-card" style="--accent:#0E4B8A;">
+              <h4>Marque</h4>
+              <p>Enregistrement prévu lors de la phase de croissance post-financement. Le logo est une création
+                originale, entièrement détenue.</p>
+            </div>
+            <div class="mini-card" style="--accent:#0E4B8A;">
+              <h4>Droits d'auteur</h4>
+              <p><span class="pill pill-green">Pleine propriété</span> de tout le code source (Django, React Native/Web)
+                et de chaque prompt IA.</p>
+            </div>
+            <div class="mini-card" style="--accent:#0E4B8A;">
+              <h4>Secrets commerciaux</h4>
+              <p>Prompts B-AI propriétaires + une base de données d'examens algériens anonymisée et organisée = avantage de premier arrivant.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. VALUE ADDED -->
+    <div id="value" class="step" data-x="2100" data-y="1700" data-z="-80" data-rotate="-3">
+      <div class="eyebrow">08 · Ce que les étudiants gagnent réellement</div>
+      <div class="note-card" style="--accent:#1E7833;">
+        <div class="card-header" style="background:#1E7833;">
+          <h2>Valeur Ajoutée</h2><span class="tag">Résultats</span>
+        </div>
+        <div class="card-body" style="border-left-color:#1E7833;">
+          <h3>Quantitatif</h3>
+          <p>Une seule plateforme au lieu de discussions éparpillées · une focalisation exclusive sur l'examen réduit
+            l'énergie d'étude gaspillée · accès 24/7 depuis n'importe quel appareil.</p>
+          <h3>Qualitatif</h3>
+          <p>✅ Les utilisateurs rapportent des <span class="pill pill-green">résultats mesurablement meilleurs</span><br>
+            ✅ Beaucoup ne dépendent plus du tout des supports originaux des professeurs<br>
+            ✅ Des heures récupérées sur la gestion désorganisée des supports<br>
+            ✅ Une équité pour les 80%+ d'étudiants qui assistent rarement aux cours</p>
+          <h3>Court Terme</h3>
+          <p>🚀 Une fois actif à Alger, Oran, Constantine &amp; Tizi-Ouzou — un véritable réseau national d'apprentissage
+            entre pairs en pharmacie.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9. COMPETITIVE ANALYSIS -->
+    <div id="competitive" class="step" data-x="-2100" data-y="2550" data-z="-120" data-rotate="-2">
+      <div class="eyebrow">09 · Pourquoi nous gagnons</div>
+      <div class="note-card" style="--accent:#9D174D;">
+        <div class="card-header" style="background:#9D174D;">
+          <h2>Analyse Concurrentielle</h2><span class="tag">Océan Bleu</span>
+        </div>
+        <div class="card-body" style="border-left-color:#9D174D;">
+          <table class="bn-table">
+            <tr>
+              <th>Fonctionnalité</th>
+              <th>BClass</th>
+              <th>NotebookLM</th>
+            </tr>
+            <tr>
+              <td>Alignement spécifique aux examens de chaque faculté</td>
+              <td class="win">✅</td>
+              <td>❌</td>
+            </tr>
+            <tr>
+              <td>Écosystème unifié et persistant</td>
+              <td class="win">✅</td>
+              <td>❌ document par document</td>
+            </tr>
+            <tr>
+              <td>QCM intégrés au style de chaque faculté</td>
+              <td class="win">✅</td>
+              <td>❌</td>
+            </tr>
+            <tr>
+              <td>Réseau de ressources inter-facultés</td>
+              <td class="win">✅</td>
+              <td>❌ utilisateurs isolés</td>
+            </tr>
+            <tr>
+              <td>Outils de moyenne / planificateur / suivi des progrès</td>
+              <td class="win">✅</td>
+              <td>❌ minimal</td>
+            </tr>
+          </table>
+          <p style="margin-top:10px;"><span class="pill pill-pink">Le facteur Océan Bleu :</span> la seule plateforme
+            combinant une IA consciente des examens, un écosystème persistant et un réseau inter-facultés — conçue
+            spécifiquement pour les étudiants en pharmacie algériens.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10. TARGET MARKET -->
+    <div id="market" class="step" data-x="-700" data-y="2550" data-z="-120" data-rotate="3">
+      <div class="eyebrow">10 · Qui nous servons</div>
+      <div class="note-card" style="--accent:#0369A1;">
+        <div class="card-header" style="background:#0369A1;">
+          <h2>Marché Cible</h2><span class="tag">TAM · SAM · SOM</span>
+        </div>
+        <div class="card-body" style="border-left-color:#0369A1;">
+          <p>Principal : étudiants en pharmacie, de la 1ère à la 5ème année, dans toutes les facultés algériennes.</p>
+          <div class="funnel">
+            <div class="funnel-row"><span class="funnel-label">TAM — 20 000</span>
+              <div class="funnel-bar" style="width:100%;background:#0E4B8A;">Tous les étudiants en pharmacie en Algérie</div>
+            </div>
+            <div class="funnel-row"><span class="funnel-label">SAM — 10 000</span>
+              <div class="funnel-bar" style="width:68%;background:#0369A1;">Blida, Alger, Constantine, Oran,
+                Tizi-Ouzou</div>
+            </div>
+            <div class="funnel-row"><span class="funnel-label">SOM — 1 500</span>
+              <div class="funnel-bar" style="width:28%;background:#1E7833;">Utilisateurs payants, capture réaliste sur 3 ans</div>
+            </div>
+          </div>
+          <h3>Tarification</h3>
+          <div class="pricing-grid">
+            <div class="pricing-card" data-accent="free">
+              <div class="plan-name">Gratuit</div>
+              <div class="plan-price">0,00 DZD</div>
+              <ul class="plan-features">
+                <li>Accès à tous les contenus &amp; outils</li>
+                <li>Suivi des progrès &amp; calculateur de moyenne</li>
+                <li>Aperçus des BNotes</li>
+                <li>*<i>Quelques bannières publicitaires</i></li>
+              </ul>
+            </div>
+            <div class="pricing-card" data-accent="premium">
+              <div class="plan-name">Premium</div>
+              <div class="plan-price">1 200 DZD/an</div>
+              <ul class="plan-features">
+                <li>Accès à tous les quiz et BNotes</li>
+                <li>100 unités BClass-Ai incluses</li>
+                <li>Sans publicité</li>
+              </ul>
+            </div>
+            <div class="pricing-card" data-accent="supporter">
+              <div class="plan-name">Supporter</div>
+              <div class="plan-price">1 500 DZD/an</div>
+              <ul class="plan-features">
+                <li>Toutes les fonctionnalités Premium</li>
+                <li>200 unités BClass-Ai incluses</li>
+                <li>Accès anticipé aux nouvelles fonctionnalités</li>
+              </ul>
+            </div>
+            <div class="pricing-card" data-accent="residanat">
+              <div class="plan-name">Pack Résidanat</div>
+              <div class="plan-price">8 000 DZD/an</div>
+              <ul class="plan-features">
+                <li>Accès complet sur 5 ans</li>
+                <li>Banques d'examens du résidanat</li>
+                <li>300 unités BClass-Ai</li>
+              </ul>
+            </div>
+          </div>
+          <h3>Unités IA :</h3>
+          Les utilisateurs peuvent acheter <span class="hl-underline">50 unités IA</span> supplémentaires pour <span class="pill pill-blue">250
+            DZD</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11. BUSINESS MODEL -->
+    <div id="business" class="step" data-x="700" data-y="2550" data-z="-120" data-rotate="-3">
+      <div class="eyebrow">11 · Comment BClass s'autofinance</div>
+      <div class="note-card" style="--accent:#0E4B8A;">
+        <div class="card-header">
+          <h2>Modèle Économique</h2><span class="tag">Économie Unitaire</span>
+        </div>
+        <div class="card-body">
+          <p>Un socle freemium, payant pour l'accès complet aux banques d'examens et aux BNotes, plus des unités IA à
+            la carte et le Pack Résidanat à forte valeur ajoutée.</p>
+          <div class="stat-grid">
+            <div class="stat-tile"><span class="num">750 DZD</span><span class="lbl">CAC</span></div>
+            <div class="stat-tile green"><span class="num">5 416 DZD</span><span class="lbl">LTV</span></div>
+            <div class="stat-tile green"><span class="num">7,2×</span><span class="lbl">LTV : CAC</span></div>
+            <div class="stat-tile"><span class="num">7 mois</span><span class="lbl">retour sur investissement</span></div>
+          </div>
+          <h3>Vers la profitabilité</h3>
+          <p>Année 1 : 150 → 600 utilisateurs payants, les dépenses dépassent les revenus. Année 2 : 600 → 1 000,
+            l'écart se réduit. Année 3 : 1 000 → 2 500 utilisateurs, <span class="pill pill-green">profitable</span> —
+            excédent d'environ 120 000 DZD/mois. <span
+              class="hl-underline">Seuil de rentabilité ≈ 30 mois</span> après le financement.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12. ROADMAP -->
+    <div id="roadmap" class="step" data-x="2100" data-y="2550" data-z="-120" data-rotate="2">
+      <div class="eyebrow">12 · Vers où nous allons</div>
+      <div class="note-card" style="--accent:#1E7833;">
+        <div class="card-header" style="background:#1E7833;">
+          <h2>Feuille de Route &amp; Vision</h2><span class="tag">3 Phases</span>
+        </div>
+        <div class="card-body" style="border-left-color:#1E7833;">
+          <div class="phase-track">
+            <div class="phase">
+              <span class="step-count">Phase 1 sur 3</span>
+              <h4>6 mois — T3/T4 2025</h4>
+              <ul>
+                <li>Lancement à Alger</li>
+                <li>Couverture complète de la 1ère à la 5ème année</li>
+                <li>Recrutement d'Ayoub &amp; Chafik</li>
+              </ul>
+              <div class="metric">150 → 400 utilisateurs</div>
+            </div>
+            <div class="phase">
+              <span class="step-count">Phase 2 sur 3</span>
+              <h4>1 an — 2026</h4>
+              <ul>
+                <li>Lancement à Constantine &amp; Oran</li>
+                <li>Chat B-AI français ↔ arabe</li>
+                <li>BNotes illustrées</li>
+              </ul>
+              <div class="metric">400 → 1 200 utilisateurs</div>
+            </div>
+            <div class="phase">
+              <span class="step-count">Phase 3 sur 3</span>
+              <h4>3 ans — 2027/28</h4>
+              <ul>
+                <li>Leader national en pharmacie</li>
+                <li>Plateformes Médecine &amp; Dentaire</li>
+                <li>Tunisie, Maroc, Sénégal</li>
+              </ul>
+              <div class="metric">1 200 → 50 000+ utilisateurs</div>
+            </div>
+          </div>
+          <p style="margin-top:14px;font-size:.86rem;">Trajectoire de revenu mensuel : <span class="pill pill-green">43k →
+              130k → 700k+ DZD</span></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 13. WHAT'S NEXT — OVERVIEW CAPSTONE -->
+    <div id="whatsnext" class="step" data-x="0" data-y="1275" data-z="0" data-scale="8">
+      <div class="hero">
+        <span class="pill pill-ghost">LE PARCOURS COMPLET</span>
+        <h1 style="font-size:3.2rem;">Et Maintenant ?</h1>
+        <p class="tagline">Aidez-nous à transformer 150 utilisateurs organiques en l'épine dorsale nationale<br>de
+          l'enseignement de la pharmacie en Algérie.
+        </p>
+        <div class="contact-strip">
+          <a href="mailto:bigovi@outlook.com" class="contact-chip">bigovi@outlook.com</a>
+          <a href="tel:+213552143790" class="contact-chip">+213 552 14 37 90</a>
+          <a href="https://bigoviclass.com" target="_blank" class="contact-chip">bigoviclass.com</a>
+          <!-- <a href="https://linkedin.com/in/essaidi-fouad-b66b27276" target="_blank"
+            class="contact-chip">linkedin.com/in/essaidi-fouad-b66b27276</a> -->
+        </div>
+        <p class="founder-line">ESSAIDI Fouad (Bigovi) — Fondateur, CTO &amp; Responsable Produit</p>
+        <!-- <div class="hint">You're now zoomed all the way out — every milestone above, in one view</div> -->
+      </div>
+    </div>
+
+  </div><!-- /#impress -->
+
+  <script src="https://cdn.jsdelivr.net/gh/impress/impress.js@2.0.0/js/impress.js"></script>
+  <script>
+    (function () {
+      var api = impress();
+      api.init();
+
+      var steps = Array.prototype.slice.call(document.querySelectorAll('#impress .step'));
+      var total = steps.length;
+      var progressText = document.getElementById('progressText');
+
+      function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+      function updateProgress(target) {
+        var idx = steps.indexOf(target);
+        if (idx === -1) idx = 0;
+        progressText.textContent = pad(idx + 1) + ' / ' + pad(total);
+      }
+
+      document.getElementById('impress').addEventListener('impress:stepenter', function (e) {
+        updateProgress(e.target);
+      });
+
+      // initial state
+      updateProgress(steps[0]);
+
+      // click any step to jump to it
+      steps.forEach(function (el) {
+        el.addEventListener('click', function () {
+          if (!el.classList.contains('active')) api.goto(el.id);
+        });
+      });
+
+      document.getElementById('nextBtn').addEventListener('click', function () { api.next(); });
+      document.getElementById('prevBtn').addEventListener('click', function () { api.prev(); });
+      document.getElementById('mapBtn').addEventListener('click', function () { api.goto('whatsnext'); });
+
+      // Desktop Presentation Mode
+      var isPresentationMode = false;
+      var fabStack = document.querySelector('.fab-stack');
+      var desktopHint = document.querySelector('.hint-chrome');
+
+      function enterFullscreen() {
+        var docEl = document.documentElement;
+        if (docEl.requestFullscreen) {
+          docEl.requestFullscreen();
+        } else if (docEl.webkitRequestFullscreen) {
+          docEl.webkitRequestFullscreen();
+        } else if (docEl.msRequestFullscreen) {
+          docEl.msRequestFullscreen();
+        }
+      }
+
+      function exitFullscreen() {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+        }
+      }
+
+      function enablePresentationMode() {
+        isPresentationMode = true;
+        document.body.classList.add('presentation-mode');
+        if (fabStack) fabStack.style.display = 'none';
+        if (desktopHint) desktopHint.style.display = 'none';
+        enterFullscreen();
+      }
+
+      function disablePresentationMode() {
+        if (!isPresentationMode) return;
+        isPresentationMode = false;
+        document.body.classList.remove('presentation-mode');
+        if (fabStack) fabStack.style.display = '';
+        if (desktopHint) desktopHint.style.display = '';
+        exitFullscreen();
+      }
+
+      // Sync fullscreen exit with presentation mode exit
+      function onFullscreenChange() {
+        var fullscreenElement = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
+        if (!fullscreenElement && isPresentationMode) {
+          disablePresentationMode();
+        }
+      }
+
+      document.addEventListener('fullscreenchange', onFullscreenChange);
+      document.addEventListener('webkitfullscreenchange', onFullscreenChange);
+      document.addEventListener('mozfullscreenchange', onFullscreenChange);
+      document.addEventListener('MSFullscreenChange', onFullscreenChange);
+
+      var initPresentationBtn = document.getElementById('presentationModeBtn');
+      if (initPresentationBtn) {
+        initPresentationBtn.addEventListener('click', enablePresentationMode);
+      }
+
+      document.addEventListener('keydown', function (e) {
+        if (isPresentationMode) {
+          if (e.key === 'Escape') {
+            disablePresentationMode();
+            e.stopPropagation();
+            e.preventDefault();
+            return;
+          }
+        }
+      }, true);
+
+
+      document.addEventListener('click', function (e) {
+        if (isPresentationMode) {
+          if (e.target.closest('a, button, input, textarea, select')) return;
+          if (e.button === 0) { // left click
+            api.next();
+            e.preventDefault();
+            e.stopPropagation();
+          }
+        }
+      }, true);
+
+      document.addEventListener('mousedown', function (e) {
+        if (isPresentationMode) {
+          if (e.target.closest('a, button, input, textarea, select')) return;
+          if (e.button === 2) { // right click
+            api.prev();
+            e.preventDefault();
+            e.stopPropagation();
+          }
+        }
+      }, true);
+
+      document.addEventListener('contextmenu', function (e) {
+        if (isPresentationMode) {
+          e.preventDefault();
+        }
+      }, true);
+
+      // Mobile Helpers & Orientation Locking
+      var isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+
+
+      function checkOrientation() {
+        var isPortrait = window.innerHeight > window.innerWidth;
+        var overlay = document.getElementById('mobileOverlay');
+        if (isMobile && isPortrait) {
+          overlay.style.display = 'flex';
+        } else {
+          overlay.style.display = 'none';
+        }
+      }
+
+      if (isMobile) {
+        checkOrientation();
+        window.addEventListener('resize', checkOrientation);
+        window.addEventListener('orientationchange', checkOrientation);
+
+        document.getElementById('fullscreenBtn').addEventListener('click', function () {
+          enterFullscreen();
+          setTimeout(checkOrientation, 300);
+        });
+
+        document.getElementById('exitFullscreenText').addEventListener('click', function () {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+          } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+          }
+          setTimeout(checkOrientation, 300);
+        });
+
+        // Screen side touch navigation: right = forward, left = backward
+        document.addEventListener('touchend', function (e) {
+          if (e.target.closest('a, button, input, textarea, select, .chrome, .step:not(.active)')) {
+            return;
+          }
+          var touch = e.changedTouches ? e.changedTouches[0] : null;
+          if (!touch) return;
+          var clickX = touch.clientX;
+          var screenWidth = window.innerWidth;
+
+          if (clickX > screenWidth / 2) {
+            api.next();
+          } else {
+            api.prev();
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+
+</html>
