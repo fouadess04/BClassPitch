@@ -82,6 +82,9 @@
         radial-gradient(circle at 1px 1px, rgba(14, 75, 138, 0.09) 1.4px, transparent 0);
       background-size: 38px 38px;
       overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
     }
 
     h1,
@@ -148,7 +151,10 @@
       flex-direction: column;
       justify-content: center;
       opacity: .45;
-      transition: opacity .5s ease, visibility 0s .5s;
+      -webkit-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
+      transition: opacity 800ms ease, visibility 0s .5s;
     }
 
     .step.active {
