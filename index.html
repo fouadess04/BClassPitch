@@ -676,7 +676,7 @@
     .wordmark span {
       font-weight: 800;
       font-size: 1.55rem;
-      color: var(--primary-blue);
+      color: var(--primary-green);
       letter-spacing: -0.01em;
     }
 
@@ -1050,8 +1050,8 @@
     </button>
   </div>
 
-  <div class="chrome hint-chrome">Arrow keys / space to advance · <b>Click the clock icon</b> to zoom out and see
-    everything</div>
+  <div class="chrome hint-chrome">Arrow keys / space to advance · <span id="presentationModeBtn"
+      style="color: var(--primary-blue); font-weight: bold; cursor: pointer;">Presentation mode</span></div>
 
   <!-- ============== IMPRESS CANVAS ============== -->
   <div id="impress" data-transition-duration="900" data-width="1100" data-height="760" data-perspective="1200">
@@ -1469,7 +1469,8 @@
           <a href="mailto:bigovi@outlook.com" class="contact-chip">bigovi@outlook.com</a>
           <a href="tel:+213552143790" class="contact-chip">+213 552 14 37 90</a>
           <a href="https://bigoviclass.com" target="_blank" class="contact-chip">bigoviclass.com</a>
-          <a href="https://linkedin.com/in/essaidi-fouad-b66b27276" target="_blank" class="contact-chip">linkedin.com/in/essaidi-fouad-b66b27276</a>
+          <a href="https://linkedin.com/in/essaidi-fouad-b66b27276" target="_blank"
+            class="contact-chip">linkedin.com/in/essaidi-fouad-b66b27276</a>
         </div>
         <p class="founder-line">ESSAIDI Fouad (Bigovi) — Founder, CTO &amp; Product Lead</p>
         <!-- <div class="hint">You're now zoomed all the way out — every milestone above, in one view</div> -->
@@ -1513,6 +1514,59 @@
       document.getElementById('nextBtn').addEventListener('click', function () { api.next(); });
       document.getElementById('prevBtn').addEventListener('click', function () { api.prev(); });
       document.getElementById('mapBtn').addEventListener('click', function () { api.goto('whatsnext'); });
+
+      // Desktop Presentation Mode
+      var isPresentationMode = false;
+      var fabStack = document.querySelector('.fab-stack');
+      var desktopHint = document.querySelector('.hint-chrome');
+
+      function enablePresentationMode() {
+        isPresentationMode = true;
+        if (fabStack) fabStack.style.display = 'none';
+        if (desktopHint) desktopHint.style.display = 'none';
+      }
+
+      function disablePresentationMode() {
+        isPresentationMode = false;
+        if (fabStack) fabStack.style.display = '';
+        if (desktopHint) desktopHint.style.display = '';
+      }
+
+      var initPresentationBtn = document.getElementById('presentationModeBtn');
+      if (initPresentationBtn) {
+        initPresentationBtn.addEventListener('click', enablePresentationMode);
+      }
+
+      document.addEventListener('keydown', function (e) {
+        if (isPresentationMode) {
+          if (e.key === 'Escape') {
+            disablePresentationMode();
+            e.stopPropagation();
+            e.preventDefault();
+            return;
+          }
+        }
+      }, true);
+
+
+      document.addEventListener('mousedown', function (e) {
+        if (isPresentationMode) {
+          if (e.target.closest('a, button, input, textarea, select')) return;
+          if (e.button === 0) { // left click
+            api.next();
+            e.preventDefault();
+          } else if (e.button === 2) { // right click
+            api.prev();
+            e.preventDefault();
+          }
+        }
+      }, true);
+
+      document.addEventListener('contextmenu', function (e) {
+        if (isPresentationMode) {
+          e.preventDefault();
+        }
+      }, true);
 
       // Mobile Helpers & Orientation Locking
       var isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
