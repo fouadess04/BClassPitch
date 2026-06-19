@@ -130,8 +130,9 @@ html, body {
     visibility: visible !important;
 }
 #whatsnext.active .hero {
-    width: 1100px !important;
-    min-height: 720px !important;
+    width: calc(1100px - 80px) !important;
+    min-height: calc(720px - 80px) !important;
+    margin: 40px auto !important;
     font-size: 1rem !important;
 }
 
