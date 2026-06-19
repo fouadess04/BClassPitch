@@ -596,6 +596,23 @@
       z-index: 1;
     }
 
+    /* First slide specific vertical margins */
+    #title .logo-mark {
+      margin-bottom: 24px;
+    }
+
+    #title .pill-ghost {
+      margin-bottom: 24px;
+    }
+
+    #title h1 {
+      margin: 20px 0;
+    }
+
+    #title .tagline {
+      margin-bottom: 40px;
+    }
+
     /* ============================================================
    FIXED UI CHROME (outside canvas)
    ============================================================ */
@@ -1298,7 +1315,7 @@
       document.getElementById('mapBtn').addEventListener('click', function () { api.goto('whatsnext'); });
 
       // Mobile Helpers & Orientation Locking
-      var isMobile = ('ontouchstart' in window || navigator.maxTouchPoints > 0 || /Mobi|Android|iPhone/i.test(navigator.userAgent));
+      var isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
       function enterFullscreen() {
         var docEl = document.documentElement;
@@ -1342,12 +1359,14 @@
           setTimeout(checkOrientation, 300);
         });
 
-        // Screen side clicking: right = forward, left = backward
-        document.addEventListener('click', function (e) {
+        // Screen side touch navigation: right = forward, left = backward
+        document.addEventListener('touchend', function (e) {
           if (e.target.closest('a, button, input, textarea, select, .chrome, .step:not(.active)')) {
             return;
           }
-          var clickX = e.clientX;
+          var touch = e.changedTouches ? e.changedTouches[0] : null;
+          if (!touch) return;
+          var clickX = touch.clientX;
           var screenWidth = window.innerWidth;
 
           if (clickX > screenWidth / 2) {
