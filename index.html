@@ -625,6 +625,10 @@
       z-index: 1;
     }
 
+    body.presentation-mode #title .hint {
+      display: none;
+    }
+
     .hero .founder-line {
       font-family: var(--sans);
       font-size: .9rem;
@@ -677,7 +681,7 @@
     .wordmark span {
       font-weight: 800;
       font-size: 1.55rem;
-      color: var(--active-green);
+      color: #3A9749;
       letter-spacing: -0.01em;
     }
 
@@ -1470,8 +1474,8 @@
           <a href="mailto:bigovi@outlook.com" class="contact-chip">bigovi@outlook.com</a>
           <a href="tel:+213552143790" class="contact-chip">+213 552 14 37 90</a>
           <a href="https://bigoviclass.com" target="_blank" class="contact-chip">bigoviclass.com</a>
-          <a href="https://linkedin.com/in/essaidi-fouad-b66b27276" target="_blank"
-            class="contact-chip">linkedin.com/in/essaidi-fouad-b66b27276</a>
+          <!-- <a href="https://linkedin.com/in/essaidi-fouad-b66b27276" target="_blank"
+            class="contact-chip">linkedin.com/in/essaidi-fouad-b66b27276</a> -->
         </div>
         <p class="founder-line">ESSAIDI Fouad (Bigovi) — Founder, CTO &amp; Product Lead</p>
         <!-- <div class="hint">You're now zoomed all the way out — every milestone above, in one view</div> -->
@@ -1523,12 +1527,14 @@
 
       function enablePresentationMode() {
         isPresentationMode = true;
+        document.body.classList.add('presentation-mode');
         if (fabStack) fabStack.style.display = 'none';
         if (desktopHint) desktopHint.style.display = 'none';
       }
 
       function disablePresentationMode() {
         isPresentationMode = false;
+        document.body.classList.remove('presentation-mode');
         if (fabStack) fabStack.style.display = '';
         if (desktopHint) desktopHint.style.display = '';
       }
@@ -1550,15 +1556,24 @@
       }, true);
 
 
-      document.addEventListener('mousedown', function (e) {
+      document.addEventListener('click', function (e) {
         if (isPresentationMode) {
           if (e.target.closest('a, button, input, textarea, select')) return;
           if (e.button === 0) { // left click
             api.next();
             e.preventDefault();
-          } else if (e.button === 2) { // right click
+            e.stopPropagation();
+          }
+        }
+      }, true);
+
+      document.addEventListener('mousedown', function (e) {
+        if (isPresentationMode) {
+          if (e.target.closest('a, button, input, textarea, select')) return;
+          if (e.button === 2) { // right click
             api.prev();
             e.preventDefault();
+            e.stopPropagation();
           }
         }
       }, true);
