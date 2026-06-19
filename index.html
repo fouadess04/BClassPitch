@@ -1525,19 +1525,56 @@
       var fabStack = document.querySelector('.fab-stack');
       var desktopHint = document.querySelector('.hint-chrome');
 
+      function enterFullscreen() {
+        var docEl = document.documentElement;
+        if (docEl.requestFullscreen) {
+          docEl.requestFullscreen();
+        } else if (docEl.webkitRequestFullscreen) {
+          docEl.webkitRequestFullscreen();
+        } else if (docEl.msRequestFullscreen) {
+          docEl.msRequestFullscreen();
+        }
+      }
+
+      function exitFullscreen() {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+        }
+      }
+
       function enablePresentationMode() {
         isPresentationMode = true;
         document.body.classList.add('presentation-mode');
         if (fabStack) fabStack.style.display = 'none';
         if (desktopHint) desktopHint.style.display = 'none';
+        enterFullscreen();
       }
 
       function disablePresentationMode() {
+        if (!isPresentationMode) return;
         isPresentationMode = false;
         document.body.classList.remove('presentation-mode');
         if (fabStack) fabStack.style.display = '';
         if (desktopHint) desktopHint.style.display = '';
+        exitFullscreen();
       }
+
+      // Sync fullscreen exit with presentation mode exit
+      function onFullscreenChange() {
+        var fullscreenElement = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
+        if (!fullscreenElement && isPresentationMode) {
+          disablePresentationMode();
+        }
+      }
+
+      document.addEventListener('fullscreenchange', onFullscreenChange);
+      document.addEventListener('webkitfullscreenchange', onFullscreenChange);
+      document.addEventListener('mozfullscreenchange', onFullscreenChange);
+      document.addEventListener('MSFullscreenChange', onFullscreenChange);
 
       var initPresentationBtn = document.getElementById('presentationModeBtn');
       if (initPresentationBtn) {
@@ -1587,16 +1624,7 @@
       // Mobile Helpers & Orientation Locking
       var isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-      function enterFullscreen() {
-        var docEl = document.documentElement;
-        if (docEl.requestFullscreen) {
-          docEl.requestFullscreen();
-        } else if (docEl.webkitRequestFullscreen) {
-          docEl.webkitRequestFullscreen();
-        } else if (docEl.msRequestFullscreen) {
-          docEl.msRequestFullscreen();
-        }
-      }
+
 
       function checkOrientation() {
         var isPortrait = window.innerHeight > window.innerWidth;
