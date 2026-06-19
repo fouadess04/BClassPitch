@@ -42,6 +42,7 @@ HIDE_CHROME_CSS = """
 .chrome.progress-pill,
 .chrome.fab-stack,
 .chrome.hint-chrome,
+.hint,
 #mobileOverlay,
 .fallback-message {
     display: none !important;
