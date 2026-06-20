@@ -7,6 +7,7 @@ by leveraging Playwright's built-in page.pdf() renderer (Chromium print-to-PDF).
 Usage:
     python export_pdf.py                     # uses http://localhost:5000
     python export_pdf.py --url http://...    # custom URL
+    python export_pdf.py --html index.html   # local HTML file
     python export_pdf.py --output deck.pdf   # custom output filename
 
 Requirements (install inside venv):
@@ -26,6 +27,7 @@ SLIDE_IDS = [
     "team",
     "problem",
     "solution",
+    "prototype-links",
     "traction",
     "ip",
     "value",
@@ -235,12 +237,23 @@ def main():
         help="URL of the running presentation (default: http://localhost:5000)",
     )
     parser.add_argument(
+        "--html",
+        help="Local HTML file to export (e.g., index.html). Overrides --url.",
+    )
+    parser.add_argument(
         "--output",
         default="BClass — Pitch Deck.pdf",
         help="Output PDF filename (default: 'exports/BClass — Pitch Deck.pdf')",
     )
     args = parser.parse_args()
-    export_pdf(args.url, args.output)
+
+    if args.html:
+        html_path = Path(args.html).resolve()
+        url = f"file://{html_path}"
+    else:
+        url = args.url
+
+    export_pdf(url, args.output)
 
 
 if __name__ == "__main__":

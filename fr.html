@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>BClass — Présentation du Projet</title>
+  <title>BClass — Présentation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1009,8 +1009,8 @@
       <line x1="12" y1="18" x2="12.01" y2="18" />
     </svg>
     <h2>Tournez votre appareil</h2>
-    <p>Veuillez faire pivoter votre téléphone en mode paysage (horizontal) pour une meilleure expérience de visualisation.</p>
-    <button id="fullscreenBtn">Activer le plein écran &amp; commencer</button>
+    <p>Veuillez tourner votre téléphone en mode paysage pour une meilleure expérience de visionnage.</p>
+    <button id="fullscreenBtn">Passer en plein écran &amp; démarrer</button>
     <span id="exitFullscreenText"
       style="color: #ff4a4a; cursor: pointer; display: block; margin-top: 18px; font-family: var(--sans); font-size: 0.9rem; font-weight: 700; text-decoration: underline;">Quitter
       le mode plein écran</span>
@@ -1018,36 +1018,36 @@
 
   <div class="fallback-message">
     <div>
-      <h2 style="margin:0 0 8px;">Ce diaporama nécessite un navigateur récent</h2>
-      <p style="font-family:var(--serif);color:var(--neutral-text);">Veuillez ouvrir cette présentation avec la dernière
-        version de Chrome, Safari, Edge ou Firefox pour consulter le deck BClass.</p>
+      <h2 style="margin:0 0 8px;">Ce support nécessite un navigateur récent</h2>
+      <p style="font-family:var(--serif);color:var(--neutral-text);">Veuillez ouvrir cette présentation avec la
+        dernière version de Chrome, Safari, Edge ou Firefox pour visualiser le pitch deck BClass.</p>
     </div>
   </div>
 
   <!-- ============== FIXED CHROME ============== -->
   <div class="chrome wordmark">
-    <img src="Assets/bclass-logo.png" alt="BClass logo">
+    <img src="Assets/bclass-logo.png" alt="Logo BClass">
     <span>BClass</span>
   </div>
 
-  <div class="chrome progress-pill" id="progressPill"><span class="dot"></span><span id="progressText">01 / 13</span>
+  <div class="chrome progress-pill" id="progressPill"><span class="dot"></span><span id="progressText">01 / 14</span>
   </div>
 
   <div class="chrome fab-stack">
-    <button class="fab map" id="mapBtn" title="Zoom out — see the whole journey">
+    <button class="fab map" id="mapBtn" title="Zoomer pour voir l'ensemble du parcours">
       <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"
         stroke-linejoin="round">
         <circle cx="12" cy="12" r="9" />
         <path d="M12 7v5l3 2" />
       </svg>
     </button>
-    <button class="fab prev" id="prevBtn" title="Previous">
+    <button class="fab prev" id="prevBtn" title="Précédent">
       <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"
         stroke-linejoin="round">
         <path d="M18 15l-6-6-6 6" />
       </svg>
     </button>
-    <button class="fab next" id="nextBtn" title="Next">
+    <button class="fab next" id="nextBtn" title="Suivant">
       <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"
         stroke-linejoin="round">
         <path d="M6 9l6 6 6-6" />
@@ -1064,10 +1064,10 @@
     <!-- 1. TITLE -->
     <div id="title" class="step" data-x="0" data-y="0" data-z="0">
       <div class="hero">
-        <img class="logo-mark" src="Assets/bclass-logo.png" alt="BClass logo">
+        <img class="logo-mark" src="Assets/bclass-logo.png" alt="Logo BClass">
         <span class="pill pill-ghost">BIGOVICLASS · LE PARTENAIRE DE L'ÉTUDIANT</span>
         <h1>BClass</h1>
-        <p class="tagline">« La seule plateforme éducative dont vous aurez besoin. »</p>
+        <p class="tagline">"The only education platform you'll need."</p>
         <div class="contact-strip">
           <span class="contact-chip">ESSAIDI Fouad — Fondateur &amp; CTO</span>
           <a href="mailto:bigovi@outlook.com" class="contact-chip">bigovi@outlook.com</a>
@@ -1080,67 +1080,66 @@
 
     <!-- 2. EXECUTIVE SUMMARY -->
     <div id="exec-summary" class="step" data-x="-1400" data-y="850" data-z="-40" data-rotate="-3">
-      <div class="eyebrow">02 · L'essentiel en 60 secondes</div>
+      <div class="eyebrow">02 · Le Pitch en 60 Secondes</div>
       <div class="note-card" style="--accent:#0E4B8A;">
         <div class="card-header">
-          <h2>Résumé du Projet</h2><span class="tag">Pitch Express</span>
+          <h2>Résumé Exécutif</h2><span class="tag">Elevator Pitch</span>
         </div>
         <div class="card-body">
           <h3>Le Problème</h3>
-          <p>Les étudiants en pharmacie à travers l'Algérie peinent avec des ressources d'apprentissage éparpillées —
+          <p>Les étudiants en pharmacie à travers l'Algérie peinent avec des ressources d'apprentissage éclatées —
             groupes de discussion dispersés, aucun support fiable adapté aux examens, et aucun accès aux sujets
-            d'examens passés. Les <span class="pill pill-red">outils d'IA généralistes</span> leur font perdre du temps
-            avec des réponses hors-sujet, tandis que les restrictions des facultés bloquent une vraie préparation aux examens.
-          </p>
+            d'examens passés. Les <span class="pill pill-red">outils d'IA généralistes</span> leur font perdre du
+            temps avec des réponses hors sujet, tandis que les restrictions des facultés bloquent une vraie
+            préparation aux examens.</p>
           <h3>La Solution</h3>
-          <p>BClass est une plateforme d'apprentissage tout-en-un. Notre moteur d'IA, <span class="pill pill-pink">B-AI</span>,
-            génère des QCM spécifiques à chaque faculté à partir des documents des étudiants et des examens passés, avec des
-            explications sourcées directement depuis les supports de cours. Les <span class="pill pill-pink">BNotes</span> —
-            résumés générés par IA — adaptent le contenu aux modalités d'examen de chaque faculté.</p>
+          <p>BClass est une plateforme d'apprentissage tout-en-un. Notre moteur d'IA, <span
+              class="pill pill-pink">B-AI</span>, génère des QCM spécifiques à chaque faculté à partir des documents
+            des étudiants et des examens passés, avec des explications tirées directement des supports de cours.
+            <span class="pill pill-pink">BNotes</span> — des résumés générés par IA — adaptent le contenu aux
+            schémas d'examen de chaque faculté.
+          </p>
           <h3>L'Impact</h3>
-          <p>Les étudiants étudient plus intelligemment, pas plus durement. BClass regroupe <span class="pill pill-blue">ressources,
-              quiz, résumés et examens passés</span> en un seul endroit — éliminant le temps perdu dans chaque faculté de
-            pharmacie algérienne.</p>
+          <p>Les étudiants étudient plus intelligemment, pas plus durement. BClass réunit <span
+              class="pill pill-blue">ressources, quiz, résumés et examens passés</span> en un seul endroit —
+            supprimant le temps perdu dans chaque faculté de pharmacie algérienne.</p>
         </div>
       </div>
     </div>
 
     <!-- 3. TEAM -->
     <div id="team" class="step" data-x="0" data-y="850" data-z="-40" data-rotate="2">
-      <div class="eyebrow">03 · Qui construit ce projet</div>
+      <div class="eyebrow">03 · Qui Construit ce Projet</div>
       <div class="note-card" style="--accent:#0369A1;">
         <div class="card-header" style="background:#0369A1;">
-          <h2>L'Équipe</h2><span class="tag">4 Personnes</span>
+          <h2>L'Équipe</h2><span class="tag">2 Personnes</span>
         </div>
         <div class="card-body" style="border-left-color:#0369A1;">
           <div class="mini-grid cols-2">
             <div class="mini-card" style="--accent:#0369A1;">
-              <span class="role">Fondateur · CTO · Responsable Produit</span>
-              <h4>ESSAIDI Fouad (« Bigovi »)</h4>
-              <p>Étudiant en 4ème année de pharmacie (Blida). Développeur full-stack, UI/UX, ingénierie de prompts. A
+              <span class="role">Fondateur · CTO · Product Lead</span>
+              <h4>ESSAIDI Fouad ("Bigovi")</h4>
+              <p>Étudiant en 4ème année de pharmacie (Blida). Développeur full-stack, UI/UX, prompt engineering. A
                 conçu l'ensemble du pipeline B-AI &amp; BNotes.</p>
-              <p><span class="status-pill" style="background:#DCFCE7;color:#1E7833;">Développe &amp; dirige</span></p>
+              <p><span class="status-pill" style="background:#DCFCE7;color:#1E7833;">En construction &amp; aux
+                  commandes</span></p>
             </div>
             <div class="mini-card" style="--accent:#0369A1;">
               <span class="role">Designer UI/UX · Frontend</span>
               <h4>SADAOUI Ayoub</h4>
-              <p>Certifié UI/UX Google. Licence en développement web &amp; infographie. Spécialiste du design mobile-first.</p>
-              <p><span class="status-pill" style="background:#E0F2FE;color:#0369A1;">Engagé à rejoindre l'équipe</span></p>
+              <p>Certifié UI/UX par Google. Licence en développement web &amp; infographie. Spécialiste du design
+                mobile-first.</p>
+              <p><span class="status-pill" style="background:#E0F2FE;color:#0369A1;">Engagé à nous rejoindre</span></p>
             </div>
-            <div class="mini-card" style="--accent:#0369A1;">
-              <span class="role">Responsable Backend &amp; Sécurité</span>
-              <h4>BOUZAGHOU Chafik</h4>
-              <p>Étudiant en cybersécurité à l'ESTIN, stagiaire chez Algérie Télécom, compétiteur CTF. Sécurise les
-                données &amp; l'infrastructure de BClass.</p>
-              <p><span class="status-pill" style="background:#E0F2FE;color:#0369A1;">Engagé à rejoindre l'équipe</span></p>
+          </div>
+          <div class="mini-grid cols-1" style="padding-top: 20px">
+            <div class="mini-card" style="--accent: var(--active-green)">
+              <span class="role">Collecte &amp; Validation des Données</span>
+              <h4>Délégués de Promo et Contributeurs</h4>
+              <p>Le délégué de chaque promo contribuera à notre base de données : puisqu'il doit déjà partager les
+                supports avec les étudiants, nous lui simplifions la tâche.</p>
             </div>
-            <div class="mini-card" style="--accent:#0369A1;">
-              <span class="role">Responsable Communauté Pharmacie</span>
-              <h4>DAHMANI Rayhane</h4>
-              <p>Étudiante en 4ème année de pharmacie (Blida). Valide la pertinence du contenu et collecte les
-                ressources auprès de la communauté étudiante.</p>
-              <p><span class="status-pill" style="background:#DCFCE7;color:#1E7833;">Contribue activement</span></p>
-            </div>
+
           </div>
         </div>
       </div>
@@ -1148,217 +1147,308 @@
 
     <!-- 4. PROBLEM -->
     <div id="problem" class="step" data-x="1400" data-y="850" data-z="-40" data-rotate="-2">
-      <div class="eyebrow">04 · Pourquoi BClass doit exister</div>
+      <div class="eyebrow">04 · Pourquoi BClass Doit Exister</div>
       <div class="note-card" style="--accent:#DC2626;">
         <div class="card-header" style="background:#DC2626;">
-          <h2>Énoncé du Problème</h2><span class="tag">Réel &amp; Mesuré</span>
+          <h2>Constat du Problème</h2><span class="tag">Réel &amp; Mesuré</span>
         </div>
         <div class="card-body" style="border-left-color:#DC2626;">
-          <p>Les professeurs distribuent des supports de cours avec peu de narration ou d'explication. Les étudiants
-            doivent décoder une matière dense presque entièrement seuls, sans questions d'examen authentiques pour s'entraîner.</p>
+          <p>Les enseignants distribuent des diaporamas avec peu de fil conducteur ou d'explications. Les étudiants
+            doivent décrypter des contenus denses presque entièrement seuls, sans questions d'examens authentiques
+            pour s'entraîner.</p>
           <div class="stat-grid">
-            <div class="stat-tile"><span class="num">4+ h</span><span class="lbl">pour déchiffrer un seul sujet</span></div>
-            <div class="stat-tile"><span class="num">&lt;20%</span><span class="lbl">taux moyen de présence en cours</span>
+            <div class="stat-tile"><span class="num">4h+</span><span class="lbl">sur un seul sujet de
+                cours</span>
             </div>
-            <div class="stat-tile"><span class="num">0</span><span class="lbl">banques d'examens alignées avec les facultés</span></div>
+            <div class="stat-tile"><span class="num">&lt;20%</span><span class="lbl">de présence aux cours</span>
+            </div>
+            <div class="stat-tile"><span class="num">7 350+</span><span class="lbl">étudiants dans 5
+                facultés</span>
+            </div>
           </div>
-          <h3>Étude de Cas</h3>
-          <p>Un étudiant en 3ème année de pharmacie à Blida face aux examens de biochimie : <span class="pill pill-red">50
-              diapositives</span>, 5+ heures à essayer d'en extraire le sens, aucune question passée, et des réponses
-            génériques de ChatGPT/Gemini qui ne correspondent pas au style d'examen de la faculté. Résultat : stress,
-            manque de préparation, énergie gaspillée.</p>
-          <p style="font-size:.82rem;"><span class="hl-underline">Source : retours des utilisateurs BClass, N = 50+ étudiants,
-              2024–2025, à Blida, Alger, Constantine &amp; Oran</span></p>
+          <h3>Données &amp; Statistiques</h3>
+          <p>Les étudiants passent <span class="pill pill-red">4h+ sur un seul sujet de cours</span> en raison de
+            diapositives mal structurées, sans fil conducteur ni explications.</p>
+          <p style="font-size:.82rem;"><span class="hl-underline">Source : retours utilisateurs BClass, N=50+
+              étudiants en pharmacie, plusieurs facultés, 2024–2025</span></p>
+          <p>Présence aux cours inférieure à <span class="pill pill-red">20%</span> dans la plupart des filières
+            pharmacie — plus de 80% des étudiants apprennent uniquement à partir des diapositives, sans
+            accompagnement de l'enseignant.</p>
+          <p style="font-size:.82rem;"><span class="hl-underline">Source : observé à Blida, Alger, Constantine,
+              Oran ; retours étudiants</span></p>
+
+          <p style="font-size:.78rem;"><span class="hl-underline">Source : collecte de données interne BClass via
+              les délégués de promo, 2025–2026. Oran, Tizi-Ouzou et Constantine sont des estimations précoces ; les
+              chiffres d'Alger et de Blida sont issus de comptages directs par promotion.</span></p>
         </div>
       </div>
     </div>
 
     <!-- 5. SOLUTION -->
-    <div id="solution" class="step" data-x="-2100" data-y="1700" data-z="-80" data-rotate="3">
-      <div class="eyebrow">05 · Comment BClass règle le problème</div>
+    <div id="solution" class="step" data-x="-2800" data-y="1700" data-z="-80" data-rotate="3">
+      <div class="eyebrow">05 · Comment BClass Résout le Problème</div>
       <div class="note-card" style="--accent:#1E7833;">
         <div class="card-header" style="background:#1E7833;">
-          <h2>La Solution</h2><span class="tag">Processus en 3 étapes</span>
+          <h2>La Solution</h2><span class="tag">Processus en 3 Étapes</span>
         </div>
         <div class="card-body" style="border-left-color:#1E7833;">
-          <h3>Étape 1 — Hub de ressources centralisé</h3>
-          <p>Les délégués de promo téléchargent les cours, PDF et enregistrements. Tout est organisé dans une interface
-            minimaliste — instantanément accessible à toute la faculté, avec une découverte inter-facultés intégrée.</p>
+          <h3>Étape 1 — Hub Centralisé de Ressources</h3>
+          <p>Les délégués de promo téléchargent diaporamas, PDF et enregistrements. Tout est organisé dans une
+            interface minimaliste — accessible instantanément à toute la faculté, avec une découverte
+            inter-facultés intégrée.</p>
           <h3>Étape 2 — Génération de QCM par IA</h3>
-          <p><span class="pill pill-pink">B-AI</span> analyse les supports téléchargés et les examens historiques de la
-            faculté pour générer automatiquement des QCM spécifiques, avec des explications citées directement depuis
-            les documents source.</p>
-          <h3>Étape 3 — Résumés d'étude orientés examen</h3>
-          <p>Les <span class="pill pill-pink">BNotes</span> synthétisent documents et tendances d'examen en résumés
+          <p><span class="pill pill-pink">B-AI</span> analyse les supports téléchargés et les examens historiques
+            de la faculté pour générer automatiquement des QCM spécifiques à chaque faculté, avec des explications
+            citées directement depuis les documents sources.</p>
+          <h3>Étape 3 — Résumés d'Étude Adaptés aux Examens</h3>
+          <p><span class="pill pill-pink">BNotes</span> synthétise les documents et les schémas d'examen en résumés
             ciblés — n'enseignant que ce que chaque faculté évalue réellement.</p>
-          <p style="margin-top:14px;"><span class="pill pill-green">Une première en Algérie</span> —
-            un alignement spécifique aux examens de chaque faculté, et non des résumés IA génériques comme NotebookLM.
-            Résultat : le temps de préparation passe de <span class="hl-underline">4+ heures à moins d'1 heure</span> par sujet.
-          </p>
+          <p style="margin-top:14px;"><span class="pill pill-green">Une première en Algérie</span> — un alignement
+            sur les examens propre à chaque faculté, pas des résumés IA génériques comme NotebookLM. Résultat : le
+            temps de préparation passe de <span class="hl-underline">4h+ à moins d'1h</span> par sujet.</p>
         </div>
       </div>
     </div>
 
-    <!-- 6. PROTOTYPE & TRACTION -->
-    <div id="traction" class="step" data-x="-700" data-y="1700" data-z="-80" data-rotate="-2">
-      <div class="eyebrow">06 · La preuve que ça fonctionne</div>
+    <!-- 6. PROTOTYPE LINKS -->
+    <div id="prototype-links" class="step" data-x="-1400" data-y="1700" data-z="-80" data-rotate="0">
+      <div class="eyebrow">06 · Liens du Prototype</div>
       <div class="note-card" style="--accent:#1E7833;">
         <div class="card-header" style="background:#1E7833;">
-          <h2>Prototype &amp; Traction</h2><span class="tag">Bêta en ligne</span>
+          <h2>Présentation du Prototype</h2><span class="tag">Service en Ligne</span>
+        </div>
+        <div class="card-body" style="border-left-color:#1E7833;">
+          <div class="mini-grid cols-2"
+            style="margin-top: 30px; gap: 160px; width: fit-content; margin-left: auto; margin-right: auto; min-width: 800px;">
+            <a href="https://drive.google.com/drive/folders/1GcKIEtifgjUG5zIuwWtgBCTku43JAaBL?usp=sharing"
+              target="_blank"
+              style="border: 2px dashed var(--active-green); border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; padding: 40px 20px; transition: transform 0.2s, box-shadow 0.2s; background: #fff;"
+              onmouseover="this.style.boxShadow='0 8px 24px rgba(30,120,51,0.15)'; this.style.transform='translateY(-2px)';"
+              onmouseout="this.style.boxShadow='none'; this.style.transform='none';">
+              <svg stroke="var(--active-green)" fill="var(--active-green)" stroke-width="0" viewBox="0 0 512 512"
+                height="64" width="64" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M339 314.9L175.4 32h161.2l163.6 282.9H339zm-137.5 23.6L120.9 480h310.5L512 338.5H201.5zM154.1 67.4L0 338.5 80.6 480 237 208.8 154.1 67.4z" />
+              </svg>
+              <h4
+                style="margin-top: 15px; color: var(--active-green); text-align: center; font-family: var(--sans); font-size: 1.1rem; font-weight: 700; margin-bottom: 0;">
+                Voir la Vidéo de Présentation</h4>
+            </a>
+
+            <a href="https://bigoviclass.com" target="_blank"
+              style="border: 2px dashed var(--primary-blue); border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; padding: 40px 20px; transition: transform 0.2s, box-shadow 0.2s; background: #fff;"
+              onmouseover="this.style.boxShadow='0 8px 24px rgba(14,75,138,0.15)'; this.style.transform='translateY(-2px)';"
+              onmouseout="this.style.boxShadow='none'; this.style.transform='none';">
+              <img src="Assets/bclass-logo.png" alt="Icône BClass"
+                style="height: 64px; width: auto; object-fit: contain;">
+              <h4
+                style="margin-top: 15px; color: var(--primary-blue); text-align: center; font-family: var(--sans); font-size: 1.1rem; font-weight: 700; margin-bottom: 0;">
+                Visiter bigoviclass.com</h4>
+            </a>
+          </div>
+          <p style="text-align: center; margin-top: 30px; font-size: 0.95rem; color: var(--neutral-text);"><i>Cliquez
+              sur les panneaux ci-dessus pour découvrir notre prototype en ligne et le site du projet.</i></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. PROTOTYPE & TRACTION -->
+    <div id="traction" class="step" data-x="0" data-y="1700" data-z="-80" data-rotate="-2">
+      <div class="eyebrow">07 · La Preuve que ça Fonctionne</div>
+      <div class="note-card" style="--accent:#1E7833;">
+        <div class="card-header" style="background:#1E7833;">
+          <h2>Prototype &amp; Traction</h2><span class="tag">Bêta en Ligne</span>
         </div>
         <div class="card-body" style="border-left-color:#1E7833;">
           <div class="stat-grid">
-            <div class="stat-tile green"><span class="num">150+</span><span class="lbl">étudiants actifs, Blida</span>
+            <div class="stat-tile green"><span class="num">150+</span><span class="lbl">étudiants actifs,
+                Blida</span>
             </div>
-            <div class="stat-tile green"><span class="num">0 DZD</span><span class="lbl">dépensés en marketing</span></div>
-            <div class="stat-tile green"><span class="num">500+</span><span class="lbl">utilisateurs visés, fin 2025</span>
+            <div class="stat-tile green"><span class="num">0 DZD</span><span class="lbl">dépensé en
+                marketing</span>
+            </div>
+            <div class="stat-tile green"><span class="num">500+</span><span class="lbl">utilisateurs visés, fin
+                2025</span>
             </div>
           </div>
-          <h3>Déjà disponible</h3>
+          <h3>Disponible Aujourd'hui</h3>
           <p>Hub de ressources · QCM générés par <span class="pill pill-pink">B-AI</span> · résumés <span
-              class="pill pill-pink">BNotes</span> · chat IA · calculateur de moyenne · suivi des progrès · planificateur
-            hebdomadaire intelligent.</p>
-          <h3>Prochains 6 mois</h3>
-          <p>S'étendre aux étudiants de 1ère, 2ème &amp; 5ème année à Blida, puis lancement à <span class="pill pill-blue">Alger,
-              Oran, Constantine &amp; Tizi-Ouzou</span>.</p>
-          <p style="font-size:.85rem;margin-top:6px;">Chacun des 150 utilisateurs actuels est arrivé par <span
-              class="hl-underline">bouche-à-oreille organique</span> — un signal fort de l'adéquation produit-marché dès le départ.</p>
+              class="pill pill-pink">BNotes</span> · chat IA · calculateur de moyenne · suivi de progression ·
+            planificateur hebdomadaire intelligent.</p>
+          <h3>Expansion à Venir (Année de Lancement 2026)</h3>
+          <p>Extension de la 1ère à la 5ème année + Résidanat à <span class="pill pill-blue">Blida (~1 250+)</span>
+            et <span class="pill pill-blue">Alger (~2 500+)</span> — objectif : couverture complète d'ici
+            septembre 2026.</p>
+          <p>Lancement en milieu d'année à <span class="pill pill-blue">Oran</span> et <span
+              class="pill pill-blue">Tizi-Ouzou</span> (~1 200+ étudiants chacune), avec une montée en charge
+            promotion par promotion.</p>
+          <p>Base adressable combinée à court terme sur 4 facultés : <span class="pill pill-green">~6 150+
+              étudiants</span></p>
+          <p style="font-size:.85rem;margin-top:6px;">Chacun des 150 utilisateurs actuels nous a rejoint par <span
+              class="hl-underline">bouche-à-oreille organique</span> — un signal fort de l'adéquation
+            produit-marché dès cette phase précoce.</p>
         </div>
       </div>
     </div>
 
-    <!-- 7. IP -->
-    <div id="ip" class="step" data-x="700" data-y="1700" data-z="-80" data-rotate="2">
-      <div class="eyebrow">07 · Protéger ce que nous avons construit</div>
+    <!-- 8. IP -->
+    <div id="ip" class="step" data-x="1400" data-y="1700" data-z="-80" data-rotate="2">
+      <div class="eyebrow">08 · Protéger ce que Nous Avons Construit</div>
       <div class="note-card" style="--accent:#0E4B8A;">
         <div class="card-header">
-          <h2>Propriété Intellectuelle</h2><span class="tag">Stratégie PI</span>
+          <h2>Propriété Intellectuelle</h2><span class="tag">Stratégie IP</span>
         </div>
         <div class="card-body">
           <div class="mini-grid cols-2">
             <div class="mini-card" style="--accent:#0E4B8A;">
               <h4>Brevets</h4>
-              <p>Aucun déposé pour l'instant — dépôts prévus après financement pour protéger les pipelines B-AI &amp; BNotes.</p>
+              <p>Aucun déposé pour l'instant — dépôts prévus après le financement pour protéger les pipelines B-AI
+                &amp; BNotes.</p>
             </div>
             <div class="mini-card" style="--accent:#0E4B8A;">
               <h4>Marque</h4>
               <p>Enregistrement prévu lors de la phase de croissance post-financement. Le logo est une création
-                originale, entièrement détenue.</p>
+                originale, entièrement détenue par BClass.</p>
             </div>
             <div class="mini-card" style="--accent:#0E4B8A;">
-              <h4>Droits d'auteur</h4>
-              <p><span class="pill pill-green">Pleine propriété</span> de tout le code source (Django, React Native/Web)
-                et de chaque prompt IA.</p>
+              <h4>Droits d'Auteur</h4>
+              <p><span class="pill pill-green">Pleine propriété</span> de l'ensemble du code source (Django, React
+                Native/Web) et de chaque prompt IA.</p>
             </div>
             <div class="mini-card" style="--accent:#0E4B8A;">
-              <h4>Secrets commerciaux</h4>
-              <p>Prompts B-AI propriétaires + une base de données d'examens algériens anonymisée et organisée = avantage de premier arrivant.</p>
+              <h4>Secrets Commerciaux</h4>
+              <p>Prompts B-AI propriétaires + une base d'examens algériens anonymisée et organisée = avantage de
+                premier entrant.</p>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- 8. VALUE ADDED -->
-    <div id="value" class="step" data-x="2100" data-y="1700" data-z="-80" data-rotate="-3">
-      <div class="eyebrow">08 · Ce que les étudiants gagnent réellement</div>
+    <!-- 9. VALUE ADDED -->
+    <div id="value" class="step" data-x="2800" data-y="1700" data-z="-80" data-rotate="-3">
+      <div class="eyebrow">09 · Ce que les Étudiants Gagnent Réellement</div>
       <div class="note-card" style="--accent:#1E7833;">
         <div class="card-header" style="background:#1E7833;">
-          <h2>Valeur Ajoutée</h2><span class="tag">Résultats</span>
+          <h2>Valeur Apportée</h2><span class="tag">Résultats</span>
         </div>
         <div class="card-body" style="border-left-color:#1E7833;">
           <h3>Quantitatif</h3>
-          <p>Une seule plateforme au lieu de discussions éparpillées · une focalisation exclusive sur l'examen réduit
-            l'énergie d'étude gaspillée · accès 24/7 depuis n'importe quel appareil.</p>
+          <p>Une seule plateforme au lieu de groupes dispersés · concentration exclusive sur l'examen pour réduire
+            l'énergie d'étude gaspillée · accès 24/7 depuis tout appareil.</p>
           <h3>Qualitatif</h3>
-          <p>✅ Les utilisateurs rapportent des <span class="pill pill-green">résultats mesurablement meilleurs</span><br>
-            ✅ Beaucoup ne dépendent plus du tout des supports originaux des professeurs<br>
-            ✅ Des heures récupérées sur la gestion désorganisée des supports<br>
-            ✅ Une équité pour les 80%+ d'étudiants qui assistent rarement aux cours</p>
-          <h3>Court Terme</h3>
-          <p>🚀 Une fois actif à Alger, Oran, Constantine &amp; Tizi-Ouzou — un véritable réseau national d'apprentissage
-            entre pairs en pharmacie.</p>
+          <p><svg stroke="var(--active-green)" fill="var(--active-green)" stroke-width="0" viewBox="0 0 512 512"
+              height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style="vertical-align: baseline;">
+              <path
+                d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z" />
+            </svg> Les utilisateurs rapportent des <span class="pill pill-green">résultats mesurablement
+              meilleurs</span><br>
+            <svg stroke="var(--active-green)" fill="var(--active-green)" stroke-width="0" viewBox="0 0 512 512"
+              height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style="vertical-align: baseline;">
+              <path
+                d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z" />
+            </svg> Beaucoup ne se réfèrent plus du tout aux diaporamas originaux des enseignants<br>
+            <svg stroke="var(--active-green)" fill="var(--active-green)" stroke-width="0" viewBox="0 0 512 512"
+              height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style="vertical-align: baseline;">
+              <path
+                d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z" />
+            </svg> Des heures récupérées sur la gestion désorganisée des supports<br>
+            <svg stroke="var(--active-green)" fill="var(--active-green)" stroke-width="0" viewBox="0 0 512 512"
+              height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style="vertical-align: baseline;">
+              <path
+                d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z" />
+            </svg> Une équité pour les 80%+ d'étudiants qui assistent rarement aux cours
+          </p>
+          <h3>À Court Terme</h3>
+          <p>🚀 Une fois en ligne à Alger, Oran, Constantine &amp; Tizi-Ouzou — un véritable réseau national
+            d'apprentissage entre pairs en pharmacie.</p>
         </div>
       </div>
     </div>
 
-    <!-- 9. COMPETITIVE ANALYSIS -->
+    <!-- 10. COMPETITIVE ANALYSIS -->
     <div id="competitive" class="step" data-x="-2100" data-y="2550" data-z="-120" data-rotate="-2">
-      <div class="eyebrow">09 · Pourquoi nous gagnons</div>
+      <div class="eyebrow">10 · Pourquoi Nous Gagnons</div>
       <div class="note-card" style="--accent:#9D174D;">
         <div class="card-header" style="background:#9D174D;">
           <h2>Analyse Concurrentielle</h2><span class="tag">Océan Bleu</span>
         </div>
         <div class="card-body" style="border-left-color:#9D174D;">
-          <table class="bn-table">
-            <tr>
-              <th>Fonctionnalité</th>
-              <th>BClass</th>
-              <th>NotebookLM</th>
-            </tr>
-            <tr>
-              <td>Alignement spécifique aux examens de chaque faculté</td>
-              <td class="win">✅</td>
-              <td>❌</td>
-            </tr>
-            <tr>
-              <td>Écosystème unifié et persistant</td>
-              <td class="win">✅</td>
-              <td>❌ document par document</td>
-            </tr>
-            <tr>
-              <td>QCM intégrés au style de chaque faculté</td>
-              <td class="win">✅</td>
-              <td>❌</td>
-            </tr>
-            <tr>
-              <td>Réseau de ressources inter-facultés</td>
-              <td class="win">✅</td>
-              <td>❌ utilisateurs isolés</td>
-            </tr>
-            <tr>
-              <td>Outils de moyenne / planificateur / suivi des progrès</td>
-              <td class="win">✅</td>
-              <td>❌ minimal</td>
-            </tr>
-          </table>
-          <p style="margin-top:10px;"><span class="pill pill-pink">Le facteur Océan Bleu :</span> la seule plateforme
-            combinant une IA consciente des examens, un écosystème persistant et un réseau inter-facultés — conçue
-            spécifiquement pour les étudiants en pharmacie algériens.</p>
+          <h3>Les Concurrents</h3>
+          <p><span class="pill pill-red">Banques d'Examens Locales</span> — Sites/groupes propres à chaque faculté
+            avec des sujets d'examens passés. Pas de supports de cours, pas d'explications, pas d'IA. Très
+            basique.</p>
+          <p><span class="pill pill-blue">Google Classroom</span> — Organise et distribue les supports de façon
+            structurée. Pas d'IA, pas de ressources adaptées aux examens — un système de classement, pas un outil
+            d'étude.</p>
+          <p><span class="pill pill-pink">Google NotebookLM</span> — On télécharge des documents → l'IA génère des
+            résumés, Q&amp;R, diaporamas, fiches mémoire. IA générique (non adaptée aux examens), aucune
+            connaissance du programme, aucun écosystème pérenne.</p>
+          <p><span class="pill pill-ghost" style="background:#64748B;">IA Étudiante + Telegram</span> — Les
+            étudiants utilisent ChatGPT/Gemini/Claude → partagent les résultats dans des groupes Telegram. Pas de
+            continuité, qualité inégale, réponses génériques.</p>
+
+          <p style="margin-top:10px;"><span class="pill pill-pink">Facteur Océan Bleu :</span> La seule plateforme
+            combinant IA adaptée aux examens + écosystème pérenne + langage d'étude standardisé + mise en réseau
+            inter-facultés, conçue spécifiquement pour les étudiants en pharmacie algériens.</p>
         </div>
       </div>
     </div>
 
-    <!-- 10. TARGET MARKET -->
+    <!-- 11. TARGET MARKET -->
     <div id="market" class="step" data-x="-700" data-y="2550" data-z="-120" data-rotate="3">
-      <div class="eyebrow">10 · Qui nous servons</div>
+      <div class="eyebrow">11 · Qui Nous Servons</div>
       <div class="note-card" style="--accent:#0369A1;">
         <div class="card-header" style="background:#0369A1;">
           <h2>Marché Cible</h2><span class="tag">TAM · SAM · SOM</span>
         </div>
         <div class="card-body" style="border-left-color:#0369A1;">
-          <p>Principal : étudiants en pharmacie, de la 1ère à la 5ème année, dans toutes les facultés algériennes.</p>
+          <h3>Profil Client Idéal</h3>
+          <p><strong>Primaire :</strong> Étudiants en pharmacie de toutes les facultés algériennes
+            (1ère à 5ème année + Résidanat)<br>
+            <strong>Secondaire :</strong> Étudiants en médecine vétérinaire, médecine (Doctorat) et dentaire —
+            expansion horizontale prévue en Année 2<br>
+            <strong>Point de douleur :</strong> Absence de ressources d'étude organisées, alignées sur les examens,
+            et d'un écosystème d'apprentissage pérenne
+          </p>
+
+          <h3>Taille du Marché</h3>
           <div class="funnel">
-            <div class="funnel-row"><span class="funnel-label">TAM — 20 000</span>
-              <div class="funnel-bar" style="width:100%;background:#0E4B8A;">Tous les étudiants en pharmacie en Algérie</div>
+            <div class="funnel-row"><span class="funnel-label">TAM — 25 000+</span>
+              <div class="funnel-bar" style="width:100%;background:#0E4B8A;">Tous les étudiants en pharmacie,
+                niveau national</div>
             </div>
-            <div class="funnel-row"><span class="funnel-label">SAM — 10 000</span>
-              <div class="funnel-bar" style="width:68%;background:#0369A1;">Blida, Alger, Constantine, Oran,
-                Tizi-Ouzou</div>
+            <div class="funnel-row"><span class="funnel-label">SAM — 7 350+</span>
+              <div class="funnel-bar" style="width:55%;background:#0369A1;">Blida, Alger, Oran, Tizi-Ouzou,
+                Constantine</div>
             </div>
-            <div class="funnel-row"><span class="funnel-label">SOM — 1 500</span>
-              <div class="funnel-bar" style="width:28%;background:#1E7833;">Utilisateurs payants, capture réaliste sur 3 ans</div>
+            <div class="funnel-row"><span class="funnel-label">SOM — 3 000+</span>
+              <div class="funnel-bar" style="width:22%;background:#1E7833;">~40% du SAM, capture réaliste sur
+                2 ans</div>
             </div>
           </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- 12. BUSINESS MODEL -->
+    <div id="business" class="step" data-x="700" data-y="2550" data-z="-120" data-rotate="-3">
+      <div class="eyebrow">12 · Comment BClass se Finance</div>
+      <div class="note-card" style="--accent:#0E4B8A;">
+        <div class="card-header">
+          <h2>Modèle Économique</h2><span class="tag">Unit Economics</span>
+        </div>
+        <div class="card-body">
           <h3>Tarification</h3>
           <div class="pricing-grid">
             <div class="pricing-card" data-accent="free">
               <div class="plan-name">Gratuit</div>
               <div class="plan-price">0,00 DZD</div>
               <ul class="plan-features">
-                <li>Accès à tous les contenus &amp; outils</li>
-                <li>Suivi des progrès &amp; calculateur de moyenne</li>
-                <li>Aperçus des BNotes</li>
+                <li>Accès à tous les supports &amp; outils</li>
+                <li>Suivi de progression &amp; calculateur de moyenne</li>
+                <li>Aperçus BNotes</li>
                 <li>*<i>Quelques bannières publicitaires</i></li>
               </ul>
             </div>
@@ -1385,46 +1475,37 @@
               <div class="plan-price">8 000 DZD/an</div>
               <ul class="plan-features">
                 <li>Accès complet sur 5 ans</li>
-                <li>Banques d'examens du résidanat</li>
+                <li>Banques d'examens Résidanat</li>
                 <li>300 unités BClass-Ai</li>
               </ul>
             </div>
           </div>
-          <h3>Unités IA :</h3>
-          Les utilisateurs peuvent acheter <span class="hl-underline">50 unités IA</span> supplémentaires pour <span class="pill pill-blue">250
-            DZD</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 11. BUSINESS MODEL -->
-    <div id="business" class="step" data-x="700" data-y="2550" data-z="-120" data-rotate="-3">
-      <div class="eyebrow">11 · Comment BClass s'autofinance</div>
-      <div class="note-card" style="--accent:#0E4B8A;">
-        <div class="card-header">
-          <h2>Modèle Économique</h2><span class="tag">Économie Unitaire</span>
-        </div>
-        <div class="card-body">
-          <p>Un socle freemium, payant pour l'accès complet aux banques d'examens et aux BNotes, plus des unités IA à
-            la carte et le Pack Résidanat à forte valeur ajoutée.</p>
+          <p>Modèle <strong>freemium</strong> à la base, avec un accès payant aux banques d'annales
+            complètes et
+            aux BNotes, complété par des
+            unités <strong>IA à la carte</strong> (50 unités IA pour <span class="pill pill-blue">250
+              DZD</span>) et le pack Résidanat à forte valeur.</p>
           <div class="stat-grid">
             <div class="stat-tile"><span class="num">750 DZD</span><span class="lbl">CAC</span></div>
             <div class="stat-tile green"><span class="num">5 416 DZD</span><span class="lbl">LTV</span></div>
             <div class="stat-tile green"><span class="num">7,2×</span><span class="lbl">LTV : CAC</span></div>
-            <div class="stat-tile"><span class="num">7 mois</span><span class="lbl">retour sur investissement</span></div>
+            <div class="stat-tile"><span class="num">7 mois</span><span class="lbl">retour sur investissement</span>
+            </div>
           </div>
-          <h3>Vers la profitabilité</h3>
-          <p>Année 1 : 150 → 600 utilisateurs payants, les dépenses dépassent les revenus. Année 2 : 600 → 1 000,
-            l'écart se réduit. Année 3 : 1 000 → 2 500 utilisateurs, <span class="pill pill-green">profitable</span> —
-            excédent d'environ 120 000 DZD/mois. <span
-              class="hl-underline">Seuil de rentabilité ≈ 30 mois</span> après le financement.</p>
+
+          <h3>Chemin vers la Profitabilité</h3>
+          <p>Année 1 : 150 → 600 utilisateurs payants, les dépenses dépassent encore les revenus. Année 2 : 600 →
+            1 000, l'écart se réduit. Année 3 : 1 000 → 2 500 utilisateurs, <span
+              class="pill pill-green">rentable</span>
+            — excédent d'environ 120 000 DZD/mois. <span class="hl-underline">Seuil de rentabilité ≈ 30 mois</span>
+            après le financement.</p>
         </div>
       </div>
     </div>
 
-    <!-- 12. ROADMAP -->
+    <!-- 13. ROADMAP -->
     <div id="roadmap" class="step" data-x="2100" data-y="2550" data-z="-120" data-rotate="2">
-      <div class="eyebrow">12 · Vers où nous allons</div>
+      <div class="eyebrow">13 · Vers où Nous Allons</div>
       <div class="note-card" style="--accent:#1E7833;">
         <div class="card-header" style="background:#1E7833;">
           <h2>Feuille de Route &amp; Vision</h2><span class="tag">3 Phases</span>
@@ -1432,48 +1513,70 @@
         <div class="card-body" style="border-left-color:#1E7833;">
           <div class="phase-track">
             <div class="phase">
-              <span class="step-count">Phase 1 sur 3</span>
-              <h4>6 mois — T3/T4 2025</h4>
+              <span class="step-count">Année de Lancement</span>
+              <h4>2026</h4>
               <ul>
-                <li>Lancement à Alger</li>
-                <li>Couverture complète de la 1ère à la 5ème année</li>
-                <li>Recrutement d'Ayoub &amp; Chafik</li>
+                <li>Blida (~1 250+) + Alger (~2 500+) d'ici septembre</li>
+                <li>Lancement à Oran + Tizi-Ouzou en milieu d'année</li>
+                <li>Ayoub recruté ; Chafik en tant que consultant</li>
               </ul>
-              <div class="metric">150 → 400 utilisateurs</div>
+              <div class="metric">150 → 600+ utilisateurs · 4 facultés</div>
             </div>
             <div class="phase">
-              <span class="step-count">Phase 2 sur 3</span>
-              <h4>1 an — 2026</h4>
+              <span class="step-count">Année 2</span>
+              <h4>2027</h4>
               <ul>
-                <li>Lancement à Constantine &amp; Oran</li>
-                <li>Chat B-AI français ↔ arabe</li>
-                <li>BNotes illustrées</li>
+                <li>Couverture nationale en pharmacie (8+ facultés)</li>
+                <li>Extension vers médecine vétérinaire, médecine, dentaire</li>
+                <li>Amélioration &amp; personnalisation de l'IA</li>
               </ul>
-              <div class="metric">400 → 1 200 utilisateurs</div>
+              <div class="metric">600 → 3 000+ utilisateurs · 3 nouvelles spécialités</div>
             </div>
             <div class="phase">
-              <span class="step-count">Phase 3 sur 3</span>
-              <h4>3 ans — 2027/28</h4>
+              <span class="step-count">Année 3</span>
+              <h4>2028</h4>
               <ul>
-                <li>Leader national en pharmacie</li>
-                <li>Plateformes Médecine &amp; Dentaire</li>
-                <li>Tunisie, Maroc, Sénégal</li>
+                <li>60%+ du TAM de ~25 000+ capturé</li>
+                <li>Vétérinaire/Médecine/Dentaire à parité</li>
+                <li>4 filières, 15 facultés</li>
               </ul>
-              <div class="metric">1 200 → 50 000+ utilisateurs</div>
+              <div class="metric">3 000 → 20 000+ utilisateurs</div>
             </div>
           </div>
-          <p style="margin-top:14px;font-size:.86rem;">Trajectoire de revenu mensuel : <span class="pill pill-green">43k →
-              130k → 700k+ DZD</span></p>
+          <h3>Besoins en Ressources</h3>
+          <table class="bn-table">
+            <tr>
+              <th>Phase</th>
+              <th>Recrutements</th>
+            </tr>
+            <tr>
+              <td>Année de Lancement (2026)</td>
+              <td>Ayoub (Frontend), Chafik (Consultant Sécurité), 1 Responsable Marketing, 2 Fournisseurs de
+                Contenu</td>
+            </tr>
+            <tr>
+              <td>Année 2 (2027)</td>
+              <td>1 Développeur Backend, 1 Responsable Contenu, 1 Responsable Réseaux Sociaux</td>
+            </tr>
+            <tr>
+              <td>Année 3 (2028)</td>
+              <td>2-3 Chefs de Produit, 4-5 Créateurs de Contenu, 2 Growth Marketers</td>
+            </tr>
+          </table>
+          <!-- <p style="margin-top:6px;font-size:.85rem;"><span class="pill pill-blue">Financement Immédiat (6 mois) :
+              1 500 000
+              DZD</span> — Salaires, frais de consultant, montée en charge serveur, marketing</p> -->
+
         </div>
       </div>
     </div>
 
-    <!-- 13. WHAT'S NEXT — OVERVIEW CAPSTONE -->
+    <!-- 14. WHAT'S NEXT — OVERVIEW CAPSTONE -->
     <div id="whatsnext" class="step" data-x="0" data-y="1275" data-z="0" data-scale="8">
       <div class="hero">
         <span class="pill pill-ghost">LE PARCOURS COMPLET</span>
-        <h1 style="font-size:3.2rem;">Et Maintenant ?</h1>
-        <p class="tagline">Aidez-nous à transformer 150 utilisateurs organiques en l'épine dorsale nationale<br>de
+        <h1 style="font-size:3.2rem;">Et Maintenant</h1>
+        <p class="tagline">Aidez-nous à transformer 150 utilisateurs organiques en l'ossature nationale<br>de
           l'enseignement de la pharmacie en Algérie.
         </p>
         <div class="contact-strip">
@@ -1483,8 +1586,8 @@
           <!-- <a href="https://linkedin.com/in/essaidi-fouad-b66b27276" target="_blank"
             class="contact-chip">linkedin.com/in/essaidi-fouad-b66b27276</a> -->
         </div>
-        <p class="founder-line">ESSAIDI Fouad (Bigovi) — Fondateur, CTO &amp; Responsable Produit</p>
-        <!-- <div class="hint">You're now zoomed all the way out — every milestone above, in one view</div> -->
+        <p class="founder-line">ESSAIDI Fouad (Bigovi) — Fondateur, CTO &amp; Product Lead</p>
+        <!-- <div class="hint">Vous êtes maintenant complètement dézoomé — chaque étape ci-dessus, en une seule vue</div> -->
       </div>
     </div>
 

@@ -16,15 +16,6 @@ These define the core theme palette and typography used throughout the deck:
 | `--canvas-bg` | `#FFFFFF` | Color code |
 | `--neutral-text` | `#2C3E50` | Color code |
 | `--card-canvas` | `#F8FAFC` | Color code |
-| `--pink-bg` | `#FCE7F3` | Color code |
-| `--pink-text` | `#9D174D` | Color code |
-| `--blue-bg` | `#E0F2FE` | Color code |
-| `--blue-text` | `#0369A1` | Color code |
-| `--red-bg` | `#FEE2E2` | Color code |
-| `--red-text` | `#DC2626` | Color code |
-| `--green-bg` | `#DCFCE7` | Color code |
-| `--green-text` | `#1E7833` | Color code |
-| `--glossary` | `#94A3B8` | Color code |
 | `--sans` | `'Manrope', system-ui, sans-serif` | Font family |
 | `--serif` | `'Lora', Georgia, serif` | Font family |
 
@@ -56,19 +47,6 @@ Elements locked outside the impress canvas:
 The 13 presentation steps mapped in 3D canvas space:
 | Index | Slide ID | X Coord | Y Coord | Z Coord | Rotate | Scale | Layout & Content Structure |
 |---|---|---|---|---|---|---|---|
-| 01 | `title` | 0 | 0 | 0 | 0° | 1× | **Hero Layout**: Title: "BClass" | Tagline: ""The only education platform you'll need."" |
-| 02 | `exec-summary` | -1400 | 850 | -40 | -3° | 1× | **Note-Card** (Accent: `#0E4B8A`, Header: "Executive Summary", Tag: "Elevator Pitch")<br>- Sub-sections: "The Problem", "The Solution", "The Impact" |
-| 03 | `team` | 0 | 850 | -40 | 2° | 1× | **Note-Card** (Accent: `#0369A1`, Header: "The Team", Tag: "2 People")<br>- Mini-Grid (2 items): "ESSAIDI Fouad ("Bigovi")" (Founder · CTO · Product Lead), "SADAOUI Ayoub" (UI/UX Designer · Frontend) |
-| 04 | `problem` | 1400 | 850 | -40 | -2° | 1× | **Note-Card** (Accent: `#DC2626`, Header: "Problem Statement", Tag: "Real & Measured")<br>- Sub-sections: "Data & Statistics", "Scale of the Problem"<br>- Stat-Grid (3 tiles): 4+ hrs (on a single material topic), <20% (lecture attendance), 7,350+ (students across 5 faculties)<br>- Table structure: Headers ['Faculty', 'Students (1st–5th year)'], 6 data rows |
-| 05 | `solution` | -2100 | 1700 | -80 | 3° | 1× | **Note-Card** (Accent: `#1E7833`, Header: "The Solution", Tag: "3-Step Workflow")<br>- Sub-sections: "Step 1 — Centralized Resource Hub", "Step 2 — AI-Powered MCQ Generation", "Step 3 — Exam-Aware Study Summaries" |
-| 06 | `traction` | -700 | 1700 | -80 | -2° | 1× | **Note-Card** (Accent: `#1E7833`, Header: "Prototype & Traction", Tag: "Live Beta")<br>- Sub-sections: "Live Today", "Upcoming Expansion (Entry Year 2026)"<br>- Stat-Grid (3 tiles): 150+ (active students, Blida), 0 DZD (spent on marketing), 500+ (users targeted, end 2025) |
-| 07 | `ip` | 700 | 1700 | -80 | 2° | 1× | **Note-Card** (Accent: `#0E4B8A`, Header: "Intellectual Property", Tag: "IP Strategy")<br>- Mini-Grid (4 items): "Patents", "Trademark", "Copyright", "Trade Secrets" |
-| 08 | `value` | 2100 | 1700 | -80 | -3° | 1× | **Note-Card** (Accent: `#1E7833`, Header: "Value Added", Tag: "Outcomes")<br>- Sub-sections: "Quantitative", "Qualitative", "Near-Term" |
-| 09 | `competitive` | -2100 | 2550 | -120 | -2° | 1× | **Note-Card** (Accent: `#9D174D`, Header: "Competitive Analysis", Tag: "Blue Ocean")<br>- Sub-sections: "The Competitors", "Differentiation Matrix"<br>- Table structure: Headers ['Feature', 'BClass', 'Classroom', 'NotebookLM', 'Exam Banks'], 9 data rows |
-| 10 | `market` | -700 | 2550 | -120 | 3° | 1× | **Note-Card** (Accent: `#0369A1`, Header: "Target Market", Tag: "TAM · SAM · SOM")<br>- Sub-sections: "Ideal Customer Profile", "Faculty-Level Data", "Market Sizing", "Pricing", "AI Units:"<br>- Funnel (3 rows): TAM — 25,000+ -> All pharmacy students, nationally, SAM — 7,350+ -> Blida, Algiers, Oran, Tizi-Ouzou, Constantine, SOM — 3,000+ -> ~40% of SAM, 2-yr realistic capture<br>- Table structure: Headers ['Faculty', 'Students', 'Status'], 6 data rows |
-| 11 | `business` | 700 | 2550 | -120 | -3° | 1× | **Note-Card** (Accent: `#0E4B8A`, Header: "Business Model", Tag: "Unit Economics")<br>- Sub-sections: "Cost Structure", "Path to Profitability"<br>- Stat-Grid (4 tiles): 750 DZD (CAC), 5,416 DZD (LTV), 7.2× (LTV : CAC), 7 mo (payback)<br>- Table structure: Headers ['Cost Category', 'Amount (DZD)', 'Notes'], 6 data rows |
-| 12 | `roadmap` | 2100 | 2550 | -120 | 2° | 1× | **Note-Card** (Accent: `#1E7833`, Header: "Roadmap & Vision", Tag: "3 Phases")<br>- Sub-sections: "Resource Requirements", "Key Success Metrics (KPIs)"<br>- Roadmap Phases (3 phases): Entry Year: "2026", Year 2: "2027", Year 3: "2028"<br>- Table structure: Headers ['Phase', 'Hires'], 3 data rows |
-| 13 | `whatsnext` | 0 | 1275 | 0 | 0° | 8× | **Hero Layout**: Title: "What's Next" | Tagline: "Help us turn 150 organic users into the national backboneof Algerian pharmacy education." |
 
 ## 5. Client-Side Script Functionality
 - **Impress Initialization**: Duration 900ms, bounds 1100x760, perspective 1200.
